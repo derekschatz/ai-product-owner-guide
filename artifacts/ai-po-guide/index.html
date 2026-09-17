@@ -258,6 +258,19 @@
   .steps .card h3::before{counter-increment:e;content:"0" counter(e);font-family:var(--font-display);font-size:var(--step-2);color:var(--accent);line-height:1}
   .steps blockquote{margin:0;padding:12px 16px;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--fg);font-size:var(--step--1)}
 
+  /* Projects and skills */
+  .project-steps{counter-reset:p;display:grid;gap:12px;margin-top:var(--space-4)}
+  @media (min-width:768px){.project-steps{grid-template-columns:repeat(3,1fr)}}
+  .project-steps .card{display:flex;flex-direction:column;gap:10px}
+  .project-steps .card::before{counter-increment:p;content:"0" counter(p);font-family:var(--font-display);font-size:var(--step-2);color:var(--accent);line-height:1}
+  .project-steps .card p{margin:0}
+  .project-tree{margin:var(--space-3) 0 0;padding:16px;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--step--1);line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+  .skill-downloads{display:grid;gap:var(--space-2);margin-top:var(--space-3)}
+  @media (min-width:768px){.skill-downloads{grid-template-columns:repeat(3,1fr)}}
+  .download-card{display:flex;flex-direction:column}
+  .download-card .btn{margin-top:auto;align-self:flex-start}
+  .download-card .fit{color:var(--fg);font-weight:600}
+
   /* Tool table */
   .scroll-hint{display:none;margin-top:8px;font-size:.75rem}
   @media (max-width:900px){.scroll-hint{display:block}}
@@ -377,8 +390,8 @@
         <li><a href="#product">AI in the product</a></li>
         <li><a href="#work">AI in your work</a></li>
         <li><a href="#prompts">Prompts</a></li>
+        <li><a href="#projects">Projects &amp; skills</a></li>
         <li><a href="#tools">Tools</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="controls">
@@ -396,9 +409,8 @@
         <li><a href="#product">AI in the product</a></li>
         <li><a href="#work">AI in your work</a></li>
         <li><a href="#prompts">Prompt library</a></li>
-        <li><a href="#exercise">Team exercise</a></li>
-        <li><a href="#tools">Where to find it</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#projects">Projects &amp; skills</a></li>
+        <li><a href="#tools">Tools</a></li>
       </ul>
     </div>
   </div>
@@ -430,12 +442,12 @@
     <div class="wrap">
       <p class="mono eyebrow">01 &middot; Start here</p>
       <h2 id="basics-h">The basics, in plain English</h2>
-      <p class="lede">Seven terms that explain most of what you will run into. You do not need to know how the technology works to use it well, but these make the tools far less surprising.</p>
+      <p class="lede">Nine terms that explain most of what you will run into. The analogies are shortcuts, not perfect technical definitions, but they make the tools easier to reason about.</p>
 
       <dl class="terms">
         <div class="term">
           <dt>Model</dt>
-          <dd>The engine underneath the chat window. It has read an enormous amount of text and predicts what should come next, one word at a time. That is why it is fluent, fast, and occasionally confident about something wrong. <strong>Treat it like a well-read colleague, not a database.</strong>
+          <dd><strong>Think of the large language model, or LLM, as the brain.</strong> It is the engine underneath the chat window. It has read an enormous amount of text and predicts what should come next, one word at a time. That is why it is fluent, fast, and occasionally confident about something wrong. Treat it like a well-read colleague, not a database.
             <p class="where"><b>Which one to pick:</b> most tools let you choose a model from a dropdown. Use the newest or most capable option for real work; the "fast" or "mini" options are for quick, low-stakes questions.</p>
           </dd>
         </div>
@@ -445,7 +457,7 @@
         </div>
         <div class="term">
           <dt>Chat vs. Project</dt>
-          <dd>A <strong>chat</strong> is one conversation. When it ends, most of what you said goes with it. A <strong>Project</strong> is a folder of chats that share the same files and standing instructions. Use a Project for anything you will return to: your product, your customers, your backlog.
+          <dd>A <strong>chat</strong> is one conversation. When it ends, most of what you said goes with it. <strong>A Project is like a project room:</strong> the brief, reference files, instructions, and related conversations stay together. Use a Project for anything you will return to: your product, your customers, your backlog.
             <p class="where"><b>Where to find it:</b> ChatGPT calls them Projects. Claude calls them Projects. Microsoft 365 Copilot uses Notebooks, and a saved brief you paste in works too. See <a href="#tools">the tool guide</a>.</p>
           </dd>
         </div>
@@ -465,7 +477,15 @@
         </div>
         <div class="term">
           <dt>Custom instructions</dt>
-          <dd>Standing guidance the tool applies to every chat: who you are, how you like answers formatted, what to avoid. Set it once and stop repeating yourself. A Project has its own version that applies only inside that Project.</dd>
+          <dd><strong>Instructions are like a job description and operating manual.</strong> They tell the AI who it is helping, how to work, how to format answers, and what to avoid. Set them once and stop repeating yourself. A Project can have instructions that apply only inside that Project.</dd>
+        </div>
+        <div class="term">
+          <dt>Skill</dt>
+          <dd><strong>Skills are like SOPs for AI.</strong> A skill is a reusable set of instructions for one kind of work, such as synthesizing feedback or critiquing a backlog. A good skill names the inputs, steps, output, and guardrails so the process is repeatable. See <a href="#projects">how to make one</a>.</dd>
+        </div>
+        <div class="term">
+          <dt>Tool</dt>
+          <dd><strong>Tools are like hands and access badges.</strong> The model can reason with language; a tool lets it do something, such as search the web, read a file, run code, or use another app. Access should match the job and your organization's policy.</dd>
         </div>
         <div class="term">
           <dt>Agent</dt>
@@ -803,7 +823,7 @@ Lead with the outcome, not the activity. Keep it under 200 words, plain language
         <article class="prompt" id="p-explain" data-tags="framing">
           <div class="prompt-head"><h3>Explain it to me</h3><span class="tag">Framing</span></div>
           <p class="why">For the technical concept the team keeps mentioning that you have been nodding along to.</p>
-          <pre>Explain <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[concept, e.g. "retrieval-augmented generation"]" aria-label="Fill in: concept, e.g. "retrieval-augmented generation""></span> to me as a Product Owner with no engineering background. Use one everyday analogy, then tell me what it changes about the decisions I make (scope, quality, cost, risk). Keep it under 250 words, then offer to go deeper on any part.</pre>
+          <pre>Explain <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[concept, e.g. retrieval-augmented generation]" aria-label="Fill in: concept, e.g. retrieval-augmented generation"></span> to me as a Product Owner with no engineering background. Use one everyday analogy, then tell me what it changes about the decisions I make (scope, quality, cost, risk). Keep it under 250 words, then offer to go deeper on any part.</pre>
           <div class="prompt-foot"><small>Follow up with "what should I ask my team about this?"</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
         </article>
 
@@ -832,10 +852,84 @@ Lead with the outcome, not the activity. Keep it under 200 words, plain language
 
   <hr class="divider">
 
+  <!-- PROJECTS AND SKILLS -->
+  <section class="block" id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <p class="mono eyebrow">07 &middot; Make it reusable</p>
+      <h2 id="projects-h">Set up a Project, then give it skills</h2>
+      <p class="lede">A Project gives the AI a place to work. Instructions define how it should behave. Skills give it repeatable ways to do specific jobs.</p>
+
+      <div class="callout"><p><strong>A useful mental model:</strong> the LLM is the brain, the Project is the room, the instructions are the operating manual, skills are the SOPs, and tools are the hands. The analogy is not exact, but it helps you see what is missing when an answer disappoints you.</p></div>
+
+      <div class="project-steps" aria-label="Three steps to set up an AI Project">
+        <div class="card"><h3>Create a folder</h3><p>Give one product, initiative, or recurring workflow a home. Add only the files that help with that work: the product goal, research, glossary, decisions, and current constraints.</p></div>
+        <div class="card"><h3>Create an instructions file</h3><p>Write who the AI is helping, what good work looks like, what sources it should trust, how it should respond, and when it must ask instead of assume. Save it as <code>INSTRUCTIONS.md</code> or paste it into Project instructions.</p></div>
+        <div class="card"><h3>Add skills and tools</h3><p>Add one skill for each repeatable job. Connect only the tools the work needs, such as web search or approved files. Start small, test the output, and improve the instructions when you find a gap.</p></div>
+      </div>
+
+      <div class="grid grid-2-wide">
+        <div class="card">
+          <span class="mono">Example folder</span>
+          <h3>Keep the structure simple</h3>
+          <pre class="project-tree">my-product/
+├── INSTRUCTIONS.md
+├── context/
+│   ├── product-goal.md
+│   └── customer-research.md
+└── skills/
+    ├── feedback-synthesis/
+    │   └── SKILL.md
+    └── backlog-critic/
+        └── SKILL.md</pre>
+        </div>
+        <div class="card">
+          <span class="mono">Build a skill</span>
+          <h3>Write the SOP you would hand a teammate</h3>
+          <ol>
+            <li><strong>Name the job.</strong> Make the trigger clear: “Use this when…”</li>
+            <li><strong>List the inputs.</strong> State what files, context, or answers it needs.</li>
+            <li><strong>Write the steps.</strong> Put the reasoning process in a sensible order.</li>
+            <li><strong>Define the output.</strong> Show the format, headings, or table you expect.</li>
+            <li><strong>Add guardrails.</strong> Say what it must verify, label, avoid, or ask about.</li>
+            <li><strong>Test and revise.</strong> Run it on a real example and fix the instructions, not just the output.</li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="mono" style="margin-top:var(--space-4)">Sample skills to download</p>
+      <div class="skill-downloads">
+        <article class="card download-card">
+          <span class="mono">Customer discovery</span>
+          <h3>Feedback synthesis</h3>
+          <p>Turns interview notes, survey comments, or support tickets into sourced themes, contradictions, and follow-up questions.</p>
+          <p class="fit">Use when you need patterns without losing the evidence.</p>
+          <a class="btn btn-ghost" href="downloads/feedback-synthesis-skill.md" download>Download the skill</a>
+        </article>
+        <article class="card download-card">
+          <span class="mono">Backlog refinement</span>
+          <h3>Backlog critic</h3>
+          <p>Challenges value, evidence, assumptions, dependencies, and acceptance criteria before an item reaches the team.</p>
+          <p class="fit">Use before refinement or prioritization.</p>
+          <a class="btn btn-ghost" href="downloads/backlog-critic-skill.md" download>Download the skill</a>
+        </article>
+        <article class="card download-card">
+          <span class="mono">Stakeholder communication</span>
+          <h3>Stakeholder reframe</h3>
+          <p>Converts a feature request into the underlying outcome, open questions, options, and a practical next conversation.</p>
+          <p class="fit">Use when the request arrives before the problem is clear.</p>
+          <a class="btn btn-ghost" href="downloads/stakeholder-reframe-skill.md" download>Download the skill</a>
+        </article>
+      </div>
+      <p class="hero-note" style="margin-top:var(--space-3)">Each download is a plain Markdown file. Put it in a folder with the same name and rename it <code>SKILL.md</code> if your AI tool supports skill folders. Otherwise, paste its contents into your Project instructions or a saved prompt. Features and file conventions vary by tool.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- TOOLS -->
   <section class="block" id="tools" aria-labelledby="tools-h">
     <div class="wrap">
-      <p class="mono eyebrow">07 &middot; Where to find it</p>
+      <p class="mono eyebrow">08 &middot; Where to find it</p>
       <h2 id="tools-h">The same ideas in ChatGPT, Claude, and Copilot</h2>
       <p class="lede">The features exist in all three. The names move around, and menus change often, so search the tool's help for the words below if a button is not where this says.</p>
       <div class="table-wrap">
@@ -862,7 +956,7 @@ Lead with the outcome, not the activity. Keep it under 200 words, plain language
   <!-- CONTACT -->
   <section class="block" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
-      <p class="mono eyebrow">08 &middot; Keep in touch</p>
+      <p class="mono eyebrow">09 &middot; Keep in touch</p>
       <h2 id="contact-h">Questions after class? Ask us.</h2>
       <p class="lede">Agile Infusion offers corporate AI and agility training and coaching. If something here sparked an idea for your team, we would like to hear about it.</p>
       <div class="people">
