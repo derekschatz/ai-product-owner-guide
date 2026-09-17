@@ -269,6 +269,8 @@
   @media (min-width:768px){.skill-downloads{grid-template-columns:repeat(3,1fr)}}
   .download-card{display:flex;flex-direction:column}
   .download-card .btn{margin-top:auto;align-self:flex-start}
+  .download-card .link{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;color:var(--accent);font-weight:600;text-decoration:none;align-self:flex-start}
+  .download-card .link:hover{text-decoration:underline}
   .download-card .fit{color:var(--fg);font-weight:600}
 
   /* Tool table */
@@ -863,7 +865,7 @@ Lead with the outcome, not the activity. Keep it under 200 words, plain language
 
       <div class="project-steps" aria-label="Three steps to set up an AI Project">
         <div class="card"><h3>Create a folder</h3><p>Give one product, initiative, or recurring workflow a home. Add only the files that help with that work: the product goal, research, glossary, decisions, and current constraints.</p></div>
-        <div class="card"><h3>Create an instructions file</h3><p>Write who the AI is helping, what good work looks like, what sources it should trust, how it should respond, and when it must ask instead of assume. Save it as <code>INSTRUCTIONS.md</code> or paste it into Project instructions.</p></div>
+        <div class="card"><h3>Create the instructions your harness expects</h3><p>Write who the AI is helping, what good work looks like, what sources it should trust, how it should respond, and when it must ask instead of assume. The filename depends on the harness. Common examples include <code>AGENTS.md</code>, <code>CLAUDE.md</code>, and <code>GEMINI.md</code>. Some hosted AI Projects keep these instructions in the Project settings instead of a file.</p></div>
         <div class="card"><h3>Add skills and tools</h3><p>Add one skill for each repeatable job. Connect only the tools the work needs, such as web search or approved files. Start small, test the output, and improve the instructions when you find a gap.</p></div>
       </div>
 
@@ -872,7 +874,7 @@ Lead with the outcome, not the activity. Keep it under 200 words, plain language
           <span class="mono">Example folder</span>
           <h3>Keep the structure simple</h3>
           <pre class="project-tree">my-product/
-├── INSTRUCTIONS.md
+├── [the instructions file your harness expects]
 ├── context/
 │   ├── product-goal.md
 │   └── customer-research.md
@@ -903,24 +905,27 @@ Lead with the outcome, not the activity. Keep it under 200 words, plain language
           <h3>Feedback synthesis</h3>
           <p>Turns interview notes, survey comments, or support tickets into sourced themes, contradictions, and follow-up questions.</p>
           <p class="fit">Use when you need patterns without losing the evidence.</p>
-          <a class="btn btn-ghost" href="downloads/feedback-synthesis-skill.md" download>Download the skill</a>
+          <a class="btn btn-primary" href="downloads/feedback-synthesis-skill.zip" download>Download ZIP</a>
+          <a class="link" href="downloads/feedback-synthesis-skill.md" target="_blank" rel="noopener">View the Markdown</a>
         </article>
         <article class="card download-card">
           <span class="mono">Backlog refinement</span>
           <h3>Backlog critic</h3>
           <p>Challenges value, evidence, assumptions, dependencies, and acceptance criteria before an item reaches the team.</p>
           <p class="fit">Use before refinement or prioritization.</p>
-          <a class="btn btn-ghost" href="downloads/backlog-critic-skill.md" download>Download the skill</a>
+          <a class="btn btn-primary" href="downloads/backlog-critic-skill.zip" download>Download ZIP</a>
+          <a class="link" href="downloads/backlog-critic-skill.md" target="_blank" rel="noopener">View the Markdown</a>
         </article>
         <article class="card download-card">
           <span class="mono">Stakeholder communication</span>
           <h3>Stakeholder reframe</h3>
           <p>Converts a feature request into the underlying outcome, open questions, options, and a practical next conversation.</p>
           <p class="fit">Use when the request arrives before the problem is clear.</p>
-          <a class="btn btn-ghost" href="downloads/stakeholder-reframe-skill.md" download>Download the skill</a>
+          <a class="btn btn-primary" href="downloads/stakeholder-reframe-skill.zip" download>Download ZIP</a>
+          <a class="link" href="downloads/stakeholder-reframe-skill.md" target="_blank" rel="noopener">View the Markdown</a>
         </article>
       </div>
-      <p class="hero-note" style="margin-top:var(--space-3)">Each download is a plain Markdown file. Put it in a folder with the same name and rename it <code>SKILL.md</code> if your AI tool supports skill folders. Otherwise, paste its contents into your Project instructions or a saved prompt. Features and file conventions vary by tool.</p>
+      <p class="hero-note" style="margin-top:var(--space-3)">Each ZIP contains a skill folder with a correctly named <code>SKILL.md</code> file. Unzip it and place the folder where your harness expects skills. If your tool does not support skill folders, open the Markdown version and adapt the instructions as a saved prompt. Skill locations and conventions vary by harness, so check its documentation.</p>
     </div>
   </section>
 
