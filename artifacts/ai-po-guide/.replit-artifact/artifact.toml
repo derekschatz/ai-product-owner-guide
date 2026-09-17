@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "AI for Product Owners Guide"
+title = "AI Product Owner Guide"
 description = "A static reference guide companion to the 'AI and the Product Owner' class from Agile Infusion, covering AI basics, habits for better answers, decision checklists, and copy-and-paste prompts for Product Owners."
 version = "1.0.0"
 id = "artifacts/ai-po-guide"
