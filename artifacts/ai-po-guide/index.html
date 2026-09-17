@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI for Product Owners Guide</title>
+<meta name="description" content="A companion to the AI and the Product Owner class from Agile Infusion: AI basics, habits for better answers, decision checklists, and copy-and-paste prompts for Product Owners.">
+<meta name="theme-color" content="#F4F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18181B" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="AI for Product Owners Guide">
+<meta property="og:description" content="AI basics, better-answer habits, decision checklists, and prompts for Product Owners. From Agile Infusion.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23FC5F2B'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='34' fill='white' text-anchor='middle'%3EAI%3C/text%3E%3C/svg%3E">
+<script>
+  // Set theme before first paint so there is no flash.
+  (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter+Tight:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"AI for Product Owners Guide","description":"A companion to the AI and the Product Owner class from Agile Infusion.","publisher":{"@type":"Organization","name":"Agile Infusion","url":"https://agileinfusion.com"}}
+</script>
+<style>
+  :root{
+    --bg: oklch(96.7% 0.001 286);
+    --card: oklch(100% 0 0);
+    --fg: oklch(21% 0.006 286);
+    --muted: oklch(52% 0.014 286);
+    --faint: oklch(72% 0.012 286);
+    --border: oklch(92% 0.004 286);
+    --accent: oklch(67% 0.21 39);
+    --accent-fg: oklch(100% 0 0);
+    --accent-soft: oklch(96% 0.03 39);
+    --inverse: oklch(21% 0.006 286);
+    --inverse-fg: oklch(96.7% 0.001 286);
+    --code-bg: oklch(97.5% 0.002 286);
+    --radius: 24px;
+    --radius-sm: 8px;
+    --font-display: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+    --font-body: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px; --space-6: 48px; --space-8: 64px; --space-12: 96px;
+    --step--1: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
+    --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+    --step-1: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+    --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+    --step-3: clamp(2.25rem, 1.8rem + 2.4vw, 3.75rem);
+    --step-4: clamp(3rem, 2rem + 5vw, 6.5rem);
+    --header-h: 64px;
+    color-scheme: light;
+  }
+  html.dark{
+    --bg: oklch(18% 0.006 286);
+    --card: oklch(23% 0.006 286);
+    --fg: oklch(95% 0.002 286);
+    --muted: oklch(72% 0.01 286);
+    --faint: oklch(55% 0.01 286);
+    --border: oklch(31% 0.006 286);
+    --accent: oklch(72% 0.19 39);
+    --accent-fg: oklch(18% 0.02 39);
+    --accent-soft: oklch(27% 0.04 39);
+    --inverse: oklch(96.7% 0.001 286);
+    --inverse-fg: oklch(21% 0.006 286);
+    --code-bg: oklch(20% 0.006 286);
+    color-scheme: dark;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.1;font-weight:600}
+  h1,h2,.display{font-family:var(--font-display);font-weight:400;letter-spacing:0.01em;text-transform:uppercase;line-height:0.95}
+  h1{font-size:var(--step-4)}
+  h2{font-size:var(--step-3)}
+  h3{font-size:var(--step-1);line-height:1.25}
+  p{margin:0 0 var(--space-2)}
+  p:last-child{margin-bottom:0}
+  .prose{max-width:65ch}
+  .mono{font-family:var(--font-mono);font-size:var(--step--1);letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+  .mono-accent{color:var(--accent)}
+  .wrap{width:min(100% - 32px, 1200px);margin-inline:auto}
+  @media (min-width:768px){.wrap{width:min(100% - 64px, 1200px)}}
+
+  /* Skip link */
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .skip{position:absolute;left:8px;top:-100px;background:var(--accent);color:var(--accent-fg);padding:12px 16px;border-radius:var(--radius-sm);font-weight:600;z-index:100}
+  .skip:focus{top:8px}
+
+  /* Header */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in oklch, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);height:var(--header-h)}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+  .brand img{height:34px;width:auto;aspect-ratio:200/102}
+  html.dark .brand img{background:#fff;border-radius:6px;padding:3px}
+  .brand span{font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);display:none}
+  @media (min-width:1024px){.brand span{display:inline}}
+  nav.primary ul{list-style:none;margin:0;padding:0;display:none;gap:4px}
+  nav.primary a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-sm);text-decoration:none;font-weight:500;font-size:0.9375rem;color:var(--muted)}
+  nav.primary a:hover{color:var(--fg);background:var(--card)}
+  nav.primary a[aria-current="true"]{color:var(--fg);box-shadow:inset 0 -2px 0 var(--accent)}
+  @media (min-width:1024px){nav.primary ul{display:flex}}
+  .controls{display:flex;align-items:center;gap:8px}
+  .iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:0 12px;border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:var(--radius-sm);cursor:pointer;font:inherit;font-weight:500;font-size:0.9375rem}
+  .iconbtn:hover{border-color:var(--muted)}
+  .iconbtn:active{transform:translateY(1px)}
+  .menu-toggle{display:inline-flex}
+  @media (min-width:1024px){.menu-toggle{display:none}}
+  .mobile-menu{display:none;border-top:1px solid var(--border);background:var(--bg)}
+  .mobile-menu[data-open="true"]{display:block}
+  .mobile-menu ul{list-style:none;margin:0;padding:8px 0}
+  .mobile-menu a{display:flex;align-items:center;min-height:48px;padding:0 8px;text-decoration:none;font-weight:500;border-radius:var(--radius-sm)}
+  .mobile-menu a:hover{background:var(--card)}
+  .mobile-menu a[aria-current="true"]{color:var(--accent)}
+  @media (min-width:1024px){.mobile-menu{display:none!important}}
+
+  /* Focus */
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+  :where(a,button,input,select,textarea):focus:not(:focus-visible){outline:none}
+
+  /* Sections */
+  section.block{padding-block:var(--space-8)}
+  @media (min-width:768px){section.block{padding-block:var(--space-12)}}
+  section.block > .wrap > h2 + p{margin-top:var(--space-2)}
+  [id]{scroll-margin-top:calc(var(--header-h) + 16px)}
+  .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:var(--space-2)}
+  .eyebrow::before{content:"";width:32px;height:2px;background:var(--accent)}
+  .lede{font-size:var(--step-1);color:var(--muted);max-width:60ch;margin-top:var(--space-2)}
+  .grid{display:grid;gap:var(--space-2);margin-top:var(--space-4)}
+  @media (min-width:640px){.grid-2{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-2-wide{grid-template-columns:repeat(2,1fr)}}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3)}
+  @media (min-width:768px){.card{padding:var(--space-4)}}
+  .card h3{margin-bottom:8px}
+  .card .mono{display:block;margin-bottom:12px}
+  .card p{color:var(--muted)}
+  .card p strong{color:var(--fg);font-weight:600}
+  .card ul{margin:0;padding-left:20px;color:var(--muted)}
+  .card li{margin-bottom:6px}
+  .card li strong{color:var(--fg)}
+  .inverse{background:var(--inverse);color:var(--inverse-fg);border-color:transparent}
+  .inverse p,.inverse li,.inverse .mono{color:var(--inverse-fg);opacity:.85}
+  .inverse .mono-accent,.inverse strong{color:var(--accent);opacity:1}
+  .num{font-family:var(--font-display);font-size:var(--step-3);line-height:1;color:var(--accent);margin-bottom:8px}
+  .divider{border:0;border-top:1px solid var(--border);margin:0}
+
+  /* Hero */
+  .hero{padding-block:var(--space-8) var(--space-8)}
+  @media (min-width:768px){.hero{padding-block:var(--space-12) var(--space-12)}}
+  .hero h1{max-width:12ch}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero .lede{margin-top:var(--space-3)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--space-4)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:var(--radius-sm);text-decoration:none;font-weight:600;font-size:1rem;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:background-color .2s ease-out,transform .15s ease-out}
+  .btn-primary{background:var(--accent);color:var(--accent-fg)}
+  .btn-primary:hover{background:oklch(from var(--accent) calc(l - 0.05) c h)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-ghost{background:transparent;color:var(--fg);border-color:var(--border)}
+  .btn-ghost:hover{border-color:var(--muted)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:var(--space-4);color:var(--muted);font-size:var(--step--1)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .hero-note{margin-top:var(--space-2);color:var(--muted);font-size:var(--step--1);max-width:65ch}
+
+  /* Definition list */
+  .terms{display:grid;gap:var(--space-2);margin-top:var(--space-4)}
+  @media (min-width:768px){.terms{grid-template-columns:repeat(2,1fr)}}
+  .term{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3)}
+  .term dt{font-weight:600;font-size:var(--step-1);margin-bottom:6px}
+  .term dd{margin:0;color:var(--muted)}
+  .term dd strong{color:var(--fg);font-weight:600}
+  .term .where{margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);font-size:var(--step--1)}
+  .term .where b{color:var(--fg);font-weight:600}
+
+  /* Two-column compare */
+  .compare{display:grid;gap:var(--space-2);margin-top:var(--space-4)}
+  @media (min-width:768px){.compare{grid-template-columns:1fr 1fr}}
+  .compare ol{margin:12px 0 0;padding-left:0;list-style:none;counter-reset:s}
+  .compare li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:8px;padding:12px 0;border-top:1px solid var(--border);color:var(--muted)}
+  .compare li::before{content:"0" counter(s);font-family:var(--font-mono);color:var(--accent);font-size:var(--step--1);letter-spacing:.05em;padding-top:4px}
+  .inverse .compare li{border-color:color-mix(in oklch, var(--inverse-fg) 20%, transparent)}
+  .callout{margin-top:var(--space-4);padding:var(--space-3);border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 var(--radius-sm) var(--radius-sm) 0;max-width:75ch}
+  .callout p{margin:0}
+
+  /* Checklist */
+  .checklist{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;gap:8px}
+  .checklist li{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm)}
+  .checklist label{display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:start;padding:16px;cursor:pointer;min-height:44px}
+  .checklist input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}
+  .checklist b{display:block;font-weight:600;margin-bottom:2px}
+  .checklist span{color:var(--muted)}
+
+  /* Flow */
+  .flow{display:grid;gap:12px;margin-top:var(--space-4)}
+  @media (min-width:768px){.flow{grid-template-columns:repeat(4,1fr)}}
+  .flow .step{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3)}
+  .flow .step .mono{display:block;margin-bottom:8px}
+  .flow .step h3{margin-bottom:8px}
+  .flow .step p{color:var(--muted);font-size:var(--step--1)}
+  @media (min-width:768px){.flow .step:not(:last-child)::after{content:"\2192";position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:1.25rem;background:var(--bg);padding:0 2px;z-index:1}}
+
+  /* Story template */
+  .story{margin-top:var(--space-4);display:grid;gap:var(--space-2)}
+  @media (min-width:1024px){.story{grid-template-columns:1fr 1fr}}
+  .story .card ul{padding-left:0;list-style:none}
+  .story .card li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--border)}
+  .story .card li:first-child{border-top:0;padding-top:0}
+  .story .card li b{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:4px;font-weight:500}
+  .story .card li span{color:var(--fg)}
+  .story .card li span.muted{color:var(--muted)}
+
+  /* Use cases */
+  .use{display:flex;flex-direction:column;gap:12px}
+  .use h3{display:flex;align-items:baseline;gap:12px}
+  .use h3 .n{font-family:var(--font-mono);color:var(--accent);font-size:.8125rem;letter-spacing:.08em}
+  .use dl{margin:0;display:grid;gap:10px}
+  .use dt{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .use dd{margin:0;color:var(--fg)}
+  .use dd.own{color:var(--muted)}
+  .use a.link{margin-top:auto;font-size:var(--step--1);font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;min-height:44px}
+  .use a.link:hover{text-decoration:underline}
+
+  /* Prompt library */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)}
+  .chip{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--card);color:var(--muted);font:inherit;font-size:.9375rem;font-weight:500;cursor:pointer}
+  .chip:hover{border-color:var(--muted);color:var(--fg)}
+  .chip[aria-pressed="true"]{background:var(--inverse);color:var(--inverse-fg);border-color:var(--inverse)}
+  .prompts{display:grid;gap:var(--space-2);margin-top:var(--space-3)}
+  @media (min-width:1024px){.prompts{grid-template-columns:1fr 1fr}}
+  .prompt{display:flex;flex-direction:column;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3)}
+  .prompt[hidden]{display:none}
+  .prompt-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .prompt-head h3{font-size:var(--step-1)}
+  .tag{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap;padding-top:6px}
+  .prompt .why{color:var(--muted);font-size:var(--step--1)}
+  .prompt pre{margin:0;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;font-family:var(--font-body);font-size:var(--step--1);line-height:1.6;white-space:pre-wrap;word-wrap:break-word;color:var(--fg)}
+  .prompt pre mark{background:var(--accent-soft);color:var(--fg);border-radius:3px;padding:0 3px;font-weight:600}
+  .prompt-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .prompt-foot small{color:var(--muted);font-size:var(--step--1)}
+  .copy{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);color:var(--fg);font:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;transition:background-color .2s ease-out,border-color .2s ease-out}
+  .copy:hover{border-color:var(--muted)}
+  .copy:active{transform:translateY(1px)}
+  .copy[data-state="done"]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+  .copy[data-state="error"]{border-color:var(--accent);color:var(--accent)}
+  .copy svg{width:16px;height:16px}
+  .empty{display:none;margin-top:var(--space-3);padding:var(--space-4);border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);text-align:center}
+  .empty[data-show="true"]{display:block}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);background:var(--inverse);color:var(--inverse-fg);padding:12px 20px;border-radius:var(--radius-sm);font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s ease-out,transform .2s ease-out;z-index:60;max-width:calc(100% - 32px);text-align:center}
+  .toast[data-show="true"]{opacity:1;transform:translate(-50%,0)}
+
+  /* Exercise */
+  .steps{counter-reset:e;display:grid;gap:12px;margin-top:var(--space-4)}
+  @media (min-width:768px){.steps{grid-template-columns:repeat(2,1fr)}}
+  .steps .card{display:flex;flex-direction:column;gap:10px}
+  .steps .card h3{display:flex;gap:12px;align-items:baseline}
+  .steps .card h3::before{counter-increment:e;content:"0" counter(e);font-family:var(--font-display);font-size:var(--step-2);color:var(--accent);line-height:1}
+  .steps blockquote{margin:0;padding:12px 16px;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--fg);font-size:var(--step--1)}
+
+  /* Tool table */
+  .scroll-hint{display:none;margin-top:8px;font-size:.75rem}
+  @media (max-width:900px){.scroll-hint{display:block}}
+  .table-wrap{margin-top:var(--space-4);overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:var(--step--1)}
+  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--code-bg)}
+  tbody th{background:transparent;color:var(--fg);font-family:var(--font-body);font-size:var(--step--1);font-weight:600;text-transform:none;letter-spacing:0}
+  tr:last-child td,tr:last-child th{border-bottom:0}
+  td{color:var(--muted)}
+
+  /* Contact */
+  .people{display:grid;gap:var(--space-2);margin-top:var(--space-4)}
+  @media (min-width:768px){.people{grid-template-columns:1fr 1fr}}
+  .person h3{font-size:var(--step-2);font-family:var(--font-display);font-weight:400;letter-spacing:.01em;text-transform:uppercase;line-height:1}
+  .person .role{color:var(--muted);margin:6px 0 16px}
+  .person ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+  .people > .card{min-width:0}
+  .person li a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--fg);font-weight:500;overflow-wrap:anywhere;word-break:break-word}
+  .person li a:hover{color:var(--accent)}
+  .person li a svg{width:18px;height:18px;color:var(--accent);flex:none}
+  footer.site{border-top:1px solid var(--border);padding-block:var(--space-4)}
+  footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;color:var(--muted);font-size:var(--step--1)}
+  footer a{color:var(--fg);text-decoration:none;font-weight:500}
+  footer a:hover{color:var(--accent)}
+  .totop{position:fixed;right:16px;bottom:16px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s ease-out}
+  .totop[data-show="true"]{opacity:1;pointer-events:auto}
+
+  /* Reading progress */
+  .progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:transparent;pointer-events:none}
+  .progress span{display:block;height:100%;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0);transition:transform .1s linear}
+
+  /* Reveal on scroll */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .45s ease-out,transform .45s ease-out;transition-delay:var(--d,0ms)}
+  .reveal.in{opacity:1;transform:none}
+  html.no-motion .reveal{opacity:1;transform:none;transition:none}
+
+  /* Hero entrance */
+  .hero .eyebrow,.hero h1,.hero .lede,.hero-actions,.hero-meta,.hero-note{animation:rise .5s ease-out both}
+  .hero h1{animation-delay:.08s}.hero .lede{animation-delay:.16s}.hero-actions{animation-delay:.24s}.hero-meta{animation-delay:.32s}.hero-note{animation-delay:.4s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  html.no-motion .hero *{animation:none!important}
+
+  /* Card hover lift */
+  .card,.term,.flow .step,.prompt,.checklist li{transition:transform .2s ease-out,border-color .2s ease-out,box-shadow .2s ease-out}
+  @media (hover:hover){.card:hover,.term:hover,.flow .step:hover,.prompt:hover{transform:translateY(-2px);border-color:var(--muted)}.inverse:hover{border-color:var(--accent)}}
+  .num{transition:transform .2s ease-out}
+  @media (hover:hover){.card:hover .num{transform:translateX(4px)}}
+
+  /* Editable blanks */
+  .blank{display:inline;background:var(--accent-soft);color:var(--fg);border-radius:3px;padding:0 4px;font-weight:600;outline:none;border-bottom:2px solid var(--accent);min-width:2ch;cursor:text;transition:background-color .15s ease-out}
+  .blank:empty::before{content:attr(data-ph);color:var(--muted);font-weight:500}
+  .blank:focus{background:var(--card);box-shadow:0 0 0 3px var(--accent-soft)}
+  .blank.filled{background:transparent;border-bottom-color:var(--faint)}
+  .prompt-foot .reset{display:none;background:none;border:0;color:var(--muted);font:inherit;font-size:var(--step--1);text-decoration:underline;cursor:pointer;min-height:44px;padding:0 4px}
+  .prompt-foot .reset[data-show="true"]{display:inline-block}
+  .blank-hint{display:inline-flex;align-items:center;gap:8px;margin-top:var(--space-2);font-size:var(--step--1);color:var(--muted)}
+  .blank-hint .blank{pointer-events:none}
+
+  /* Copy button check */
+  .copy .ico{display:inline-flex;width:16px;height:16px;position:relative}
+  .copy .ico svg{position:absolute;inset:0;transition:opacity .2s ease-out,transform .2s ease-out}
+  .copy .ico .chk{opacity:0;transform:scale(.5)}
+  .copy[data-state="done"] .ico .cp{opacity:0;transform:scale(.5)}
+  .copy[data-state="done"] .ico .chk{opacity:1;transform:scale(1)}
+
+  /* Checklist verdict */
+  .verdict{margin-top:var(--space-2);background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;display:grid;gap:10px}
+  .verdict .bar{height:8px;border-radius:4px;background:var(--border);overflow:hidden}
+  .verdict .bar span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease-out}
+  .verdict p{margin:0;color:var(--muted)}
+  .verdict p strong{color:var(--fg)}
+  .checklist li:has(input:checked){border-color:var(--accent)}
+  .checklist input:checked + span b{color:var(--accent)}
+
+  /* Story builder */
+  .builder{margin-top:var(--space-4);display:grid;gap:var(--space-2)}
+  @media (min-width:1024px){.builder{grid-template-columns:1fr 1fr}}
+  .builder form{display:grid;gap:12px}
+  .builder label{display:grid;gap:6px;font-weight:600;font-size:var(--step--1)}
+  .builder label small{font-weight:400;color:var(--muted)}
+  .builder textarea,.builder input[type="text"]{width:100%;font:inherit;font-size:1rem;line-height:1.5;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--fg);resize:vertical;min-height:44px;transition:border-color .15s ease-out}
+  .builder textarea{min-height:72px}
+  .builder textarea:focus,.builder input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+  .builder .out{display:flex;flex-direction:column;gap:12px}
+  .builder .out pre{flex:1;margin:0;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;font-family:var(--font-body);font-size:var(--step--1);line-height:1.6;white-space:pre-wrap;color:var(--fg);min-height:200px}
+  .builder .out pre .ph{color:var(--faint)}
+  .builder .out .empty-note{color:var(--muted);font-size:var(--step--1)}
+  .builder .done{display:flex;align-items:center;gap:8px;font-size:var(--step--1);color:var(--muted)}
+  .builder .done .pips{display:inline-flex;gap:4px}
+  .builder .done .pips i{width:10px;height:10px;border-radius:50%;background:var(--border);transition:background-color .2s ease-out}
+  .builder .done .pips i.on{background:var(--accent)}
+
+  /* Flow step expand */
+  .flow .step{cursor:default}
+  .flow .step .more{margin:8px 0 0;color:var(--fg);font-size:var(--step--1);padding-top:8px;border-top:1px dashed var(--border)}
+  .flow .step details summary{list-style:none;cursor:pointer;color:var(--accent);font-weight:600;font-size:var(--step--1);min-height:44px;display:flex;align-items:center;gap:6px}
+  .flow .step details summary::-webkit-details-marker{display:none}
+  .flow .step details summary::after{content:"+";font-family:var(--font-mono)}
+  .flow .step details[open] summary::after{content:"\2212"}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Agile Infusion, back to top">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABmCAYAAACOTt4AAAAAAXNSR0IArs4c6QAAAIRlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACWAAAAAQAAAJYAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAMigAwAEAAAAAQAAAGYAAAAAJhpqiAAAAAlwSFlzAAAXEgAAFxIBZ5/SUgAAQABJREFUeAHtvQmAHVWVN35vra/e2t2v93SWzgYkLAJBBBGIiBABRZwEWUQ2EzdwUOcbx/n+0uA4jjrqNzIohB0d0GRQQBZlMWwKCMiaANnX3pe3v9rr/zv39et+naRDJwRE+92kuupV3bp169Q596z3XM6qZZ8gEASBtGbNGqW1tTXMLV7LfCcpacpULklTZMbbAsYXBcw/2HEdKfADpsgykxRlIAjYXZyxzTxg/aZb3OwEQbfm+2kWCqW7urqK8+bN89Ahn3PUqJa/OgTwraplohAIOoNwv9qfiEjSDJ9JB+K+g2VJPgD4P9PznFbfD+L4DZhy5roeNhdVgOcCypxJnDM9pOGnxHzfY57vO7IkDcmK3C2xYAvqrw9keS2XlPWuld/ITH0oYfcV+Jw51kT7WK23fyFQJZC3gCdxinw+3xA4zoEqV08HR/iwJEmzJC4leCAx23ZZsWAys2Azq+gy13GZ5wUM94EI0DjxAUBZIrIBgUgyjsFNVFViakhhGgjGMBQQjg4OI4neeL5X9D23m3PpFUnizwS++2TBz28uFtng1KlTi2/R5erl/QiBKoHsAZhm2pzt+fbxssxPw2h/oi7rdfm8yXKZIivmbGbmbeaAQDzHB0FwQRSgAaKEkVaJKASRiDMlwqFD0I8gHLqsKJwpOhGLwoywwkIRnYXCOginRDSWZfWBtJ7zHe8Z2/WfchXtzYaGSKdosvrnHYXA6Jd8Rx/zt9V4rqenicnGqZomfdbxveM1WZdTAzk21JsVhGFbjuAUvgd1IQBx4PWA+tAcRt+Tgxlw+gcKgF4iNnCDkWNBOLhO9zLIaD5RDDaOOrIqg6NIIBINxKKweG2UhSMG6njMKti9XJGfcD3/Xk0JnjJqajaNPrV6tL8hUCWQCogGzz+v5mfOXCIx+YtA5vdDVFL6u9IsO2QBMR0QR57ZZpG5tsN8FxsQO4AcJZAcf3dWq8FUBJEQRykRCvgAZCxZKOx4iqIxWVMhbikgClWIXiU6KXEaOiaC0UMyiEVlkRqdxWrCgrs4luMrirLG9vxfy568PFwf3lHxKtXD/QSBKoEMA3LTpqGa+rj0NUWRL4GO0TLUl2H9nVkQhsvsInSMXE5sHnENKkQVw9Ar7QQ1iEulP6hQ+j/2XIlkSueGuQuUdBCLChFLh16CTYNoBaKh+33PF4QoRDHoLaGoyqJ1BovXGBDHQsR5Cr7jPgJR77uJ5uQzFQ+rHu4HCFQJBEAcGhqarvrsSkVSzoauEe7dnmJD/UXm2R4rZrOskEnj2AW+gksQ0Alb91Bo5B+hnop6dLp8p7DioqKoWj4PuUySobxrGoglxDQQgKLreBxsXMStRG1wIegsYRBKTX2YxerCwoQMOnqpUDQ/19Da8HzFI6uHbxMC5e/1Npv52729r68vZsja9bqq/kOxaKrdW1IsA5EKozLLDg4KrkEWKQhJo9g93usC26mmLHlMUT2mgepk2RUWLCIE35eY48iwfCmwdMGctbNMhjr0LCpCJIMopukaCycSgmBI3KLLogr+KNBVYnU6q22MsGgiwlzff9os5r+abG6uchIBxbf/Z1ITyLZtgZGIpL+sSPy7junKRBy5tAXLlM2yfQMw2xYFok4MzLBEKS78fQ4Lh2xwggDeDkEWIBnsAWmf/kAxIUIxTZVl8wYIhUy7ZaLYzZNACKTkq+AkoVgUSntEcBlBJFQdB5qhsrrmCGtsSRCjeclyrS8mklVxazfQ3OtTEHQnZ+no6JASodTJqiR/3XF8uXtrimVTNqxTNkv39jOHiAOI+VaFEFVVfOgDNosYFpO5zZSgyBQ/zxSvwBRmAol9lpenMlOuBYnAxSj7LBI1QVAeMy2NuR6H05DEKNpQQ5iMaewCcUCc82EIIGKlzTSygqPoYUP0jziWCQNC71aIga7PW6YmD1cl9fuZTObSeDy+9q36X72+ZwhMWg6S6knNhF58sxEKnbB5bRdL9ZqwThFx9AmlnMQZKmJsB8KOF/kRMhwWixSZLheY7g2KTUPkiMSgzHOy+yosJ0/DNgWkgfFI4P0wx5CwLx2KHRGIB2JxXAVbWRQD0ZA5rHQjjktEE4pGWCQRF5wFlCKIiGolGg02bVYLs33rrqjEl/JEYhCnq2UfIQBBePIVIJniFc0LdF1flhqCtWpHXijhucEhZuXzpZGZkBL/iU4UBeISkNnH6E6FuAYRUDRqsZpYmkVZD4tZm1nY72YhtcBkHeo0kB0RVSATFTudyeAqEndKhEaMaVjRJ0GMwSNPvyXoJDK4i6q6TNcdsWnQZYiL0DNLhAKfCsjJsUxmmRbugbkYpmJS7ol4ijn4aGCGjiXC82zf79XCxrOPPfbYMBmK7lf/7AUESl98L274e6ia6u5uV3XjfxVZOWLbhl6W7oFnPJthGRBIADMuiS2Ev5rmMAM6haHmWd40WCYXw+sDpRFuFQXXqDV6WdTdAa7RLxBbjiKEJA5E1wLm5kAfNmoTIwGZcAxFvgxikQ3mSnD6cRVt4Qq4he0a4BghILgGFUWnJ4DAQGS4GTsWuJxZjlLaSCQDdykRC8Q1dDQUj7MwNgpbIbMwEUrj1BpW3xLbhoiwT8eTyT/9PXy3v8Y7TDoCIe6R7R+8XNP1H5JnvHtLmhXSWZbtHxgOLoSpVfJZPF5gYd1m0aCLcc9kW3PzWMGESRWWqdp4hiXljSzi4hqoQI7AP9GAkdwYYQyE+6LQyE+l9FOwAWIFZQZCh4IgfF8GMaggkDhEsSRzWC3zQDDQK8AtfGZbAbOw2ZYEQlFZvhCCRYxUSHoArGVwNCbq64UST1550ltaZiRZsinyJ88ufDLW3NxL/aiWvYPApFPS169fH26pb1woQzTJZaB3WAg2hIe8FHlb4hyxaJGFDVikwBki7nbWbc9lBTsquERNJMUapXUs5PYwCYhIXCPUDOJQA8RkAV0p+gTBisDZUiHKIAkKIhn5Lzi4D3EncZlwmzYSrSSXyYyif4s4lWIqj4LL1DNfSzIf/hARHWz7CIxkLI8YMAXm46IZYoUiOE4g49kOS4PIfTzbiEfwDIn17UjDeKAeEUpon0XDP8BWLXsJgUlHIHFNq5clPj+fsyBWUUyVIyxWJbghrAOyf9iAmTZwWdTbwWxPZwPFVqF/1MRzrFFZx8JeF5AYmgCsXHKIMTcTwGwLpIdIRQhP12gvSol1AGFxAEIhQpJC8GGE4C/BvXSOdBVxT+kO/IVuEVhoJQURqod50jQoQrXgXhT16zEjwlh6CFxDKUBf8Vg2R+ZiEAmZpwf6wYV8Fo7F8G4+ogHSoZZwzcUD2YEHkrHk6pFHVA8mBIFJRyCqYUyxbWdqPmPBWgXigLJL4SMY14GsvtAt6FDzBpjqZdigM4cV3QjTVZs1qmuhiPcAmQmrUQlEYKeIIkpKtIA45oFA9mGw2wLxseGyMNUKbR9iFMJKoPUz+AqFMq9EYSaO4On0JcpEJdqnJ8BzEqQg4hXQRg3zeBv6GGchIwBhwP+R8VkmZQqRMJsLCyckBVBChBT9C8PSlc/aLNNrzq5tDn8OJ/9R9LH6Z8IQmGwEAslDnaFwjL3ZtIjIteFboEIjuAGlXIWzD6jPDH9AnMs7CSClxGr0XhZjFA9IWEwEUirkt4CiwKCgQDrCZoI4MBlKKBflOnQLNQoi4QhWDKAvBPCQuxGITnmYdMFJ1BrONBCLaHqEUOgmIl0HvpVeWMLSIJkpzOYtMBQorKZGgqjFWGoIHA9cYygdFZwEf1gO4hZiyhDYGEZEgKlE4vrpqf7+e2vq6/+ARqtlghCYVARC1p38ULqFYGOZsBBhtHcskotKhaxWQlfwLab6OUg+CnODENOlPKtXN0FHwD34KwrhLnGLTJ4x6DBwv5doh0QpulZZyr/JMkWchTgMzMksA/AjONGLhJkHpdtLSExvAI2UuQndJ4iFDohQYBDwNzGNp2AJm8l8KQJzLq5A3xgaclncL8DShrZg5SKumOmHda2xCcQks9yQOa3WiJwFGDwOjoaOV8tEIDCpCKQEEKkG6gWUc0x5pZB1IBIhH/k5SJ6nogQmyIDC2TGy8zyUc4dFOBRg4a8oMQdOHGMoDY6BPZXdEUbpyti/ZWKh+sR58nhmHpo3CMXJQzEHOwk1I7oXVmAfdCSIZaSF0s1yAO4AInZ4O4gkyaIxmIVRx4cSRObfTDYs9h7iyTIDAywBj2gh66la2j5BjxcOQ9W/jDRZPdgjBCYhgcAyC8z3Ef5BxEFcheQasgrJ0EFIvyDko6FbAvIn2RbmQvaRMOgKTzju42mM/ikQByE4EF0o4MBd0ZT4UwFzwmmqMyw2lZ43fJ2IpFyI0CwLnCTKik6MaQ0qc/EIFRxCjaPS8P2l6kgLEeSZGrwJDjeTeXKzIJJiAYIilHsX8V05xHlRvxy0m0+nmA5nopmXZxaz9mlo60WMCWNaLHejuh8LgUlHIDCzWoTDpY0OABDgKcVHkSebfpRxh0P8SkjbWKAhaUkAUIE4WAoewKEUhmvUhfeaGghc+B1gMfLhswgcapPaQUG7JLJxjcLYsac556WcDqU6w9VKdVGZ7kN4vb8F03lzCegpcCgSFwE3IR/LWJQmj7oNItkgDAKe3ALfDUJVEKIfDZvCR2LbuBFEYmYyLIdgx0hNOOwUvBOCusGfcFYH8quWt4LApCIQjKhBZiizlTCNBm9yqBGO4lBwDz4cGxUIk9IwmeQg/sRjLAAx8AEQBhEIERJ8Gl4eSRqgINPegz+FCIUuUZsjhRoHXUjQpiWdnImYPRjFhhmCkoZnEKGVC3WKVBwbHKxrgPF4mPk1CWb2wbzbSKZhXKuoXqrsCiLhoCQjPIO5NaCXQY8lYsjwkIIO5VIIig8dZIhF8B5GTDnczOqHoKWnyo+t7seHAA2Bk6p4rrURYo6tQuQgfKSNiiAOcYQ4J46ZehRYSCM+4prIOsWLQNoMEQe4CP7bPSYrbsWMQwpyhCk1gBOPxKcSyYmGSq3ROTjvfBgF3Awyn+A+c1uOFTfnmNNvlZyKZAKuLKJTeAgZAMCtvDw86UOgDVKRdvlidAK99XfAd5JClLCEOSQIj0c8l4HoYiokapEjMUPRAsWgpph3Dg2CFcPWBlGl+mccCOwC7nHq/d2c5p63RVGkzkjUgGKugHuUOEVZrBLYryI2SoLNFVxCjNjpDAtI5yBkh9phdiL0vDPP/AIwFufIfEtbSRfBMeH78EbnxHmCtEB8EAuIiYiluD3PzC055qVBhOKG0k5Uo/vp4WQhy2SZA2ekA/okKW/XQo3D1Ottg0HBZJEYcB+NGCFLhNRTM0S8BUwbLmaKsAgrRzB2KnhNtbwVBCYdgSSamnoDKXgxlgCBkNhDegQh+XChwzCJQMlW5pFMQ0IouAcHFyEks7pNZvchHIRGc8JkgcjluyewF4SDP/RYcBYn5bDCphyzuwtC3PILPsQ1dKKybRAoSxdQl7jReM+A5YvBuuX1sHDYh1KOCVwyvO7ERdAWESlF+aYRkGmb3lG5IThTquUtITDpCGTlypUmImvvlsj9EIsgVFwbAyQiEMyuYEayjkktB7EgioEWjj/CV2cAebAGh826E4UcRnyB61BOhL4xSosl4hKE4jOzG1xpa545mNFY3JRFNDBp58PUB6sbhyXKxbNdqERElIjegmedmAB1pNwowlcQcq/AbxOGqEUVDcxulEEoZP6lOS1ZmKYLueKBoJaDUKFa3gICE/3Mb9HM387lJUuWYIqG+pCqyU80t9VjwhGZh0qF0JE28uNR0RtbmTL3cMZhAfLhIXcGoDPAUjUhriFwFop1DMngZiVYeE4dU5GNhIIVhQVsjHJeep4Nhd/uI1OvC9ELc1QQKybwnzqFNKYcc1fcQRgDRBfASngYDsMZuEjqBD0QRMDy0EV6EU9GsVogGFjnNOgjpQK7F8y+vh1oXsAXBEEfxe9Xyx4gMOkIhGARiUR6FSn4by3K8/UtdTC/IokC5lwIFAMy2vawKIMRlxtRmFsRwgFk9YoYiQlZ36oA+eHcZhqSKRiHtzHtyPlMO3YBC596NAsfP5+p05KjhFLZFtouE6APR6bVBVEOfSnpMLiIuDG3v8CEmwZ9k/xBcJF6GBVmoRX6lPQG5MfpQ8iMiZgtkAxYInGRUWbkw2kIblVwDisORMjDUi17gMCkJBAgnF/k/iOhmHZDa3ujH6uJi7gl0jFIHCLnOnx2wmRLeoht1EL2x0lC/D2xD8JPjO4yZUVsjzPjmHlMOewoJs88nElt85g661BmfOAYFjnjRBY65qCSX4RC4ytLBQG6lNp0ACLdyDkcDCE0P0scgU5S1C8sUxL0JaltuBX0ELMXZYSjGGGcAmVQfBkllBAvh1P5FHwtjj9D5l5VUR+G2ni7SUkgBIxkMpnx3ezP9Ki0atrcaSxc14jwdczqA4aTHjIwgFkZCClHYirmN05nAWbskSmY/u220GlsMlKFhubUMnXeVKbMnMek2ilATICZCIxCVfQmpkw5lEVOOImFDp/NOJLBCZFr50YJ/3GLg0QSPjkf6TeqBghp9wYQYAlKpmhfOegTFW0+FWEnpRmP1BSnFRV09IcMWug3xZmV9BDEVcK3g/SpLY7MW6lutYwPAYB88pZ4Q9taXZOujNeHNjVMbYdMNBUiFA27mDILpKQ5F/ks5ojXg3hwXQnDWQiaGaGRYaIg5ZusYVoSuXTbY0ye3sDkZrQXAsJWRvaCUHgIwYPhuYzXHcxCxx3D1JnNpQaprd0UErXIh1Ie/YlQAiTPFqIY6gtugXkjrhdilgvDFB82OiAURUEMGfILi1YV6CEiUgB9sKCHOEUnjvSlLeCapMBUyzgQmNQEQjBR4/E/xqPaRfWtkT+2zJrNpMhcDNwJ4CNxEsy3SCOoEUinHnAwUw6axtQYMBQEIWYNglKIA+j1IWa0h5k+J8GU9hYmT53PpPrpaIOGfIg2PhRrtBV4SEiXWcu81OsISYEY1NDOjA9CBENy6t06OCAekXdeKOskiuHRFLriI82Pj2m4JS7igLGkwBFc1j/UxCyvAadJzIJzEyJYyMBNKKUkdkTdiM8SuYURGmO7M3AC8SjVMh4EJlWoyXhAUGtjj+cGB78Qb9T/mctN52V6DUw62gSfQh+Q2kGwn88SySizDzgaJlRkOuzaKkZ1jsyGEhJLS0gDKjUkGWtqY1JyCpNjdUIcoim4khJjek0SISb1wjHpFnrh9NvCvEwK4pvGlNY2KO0tIJr1IBIighJCl/tKjEUYB0AgpTxdIE6ypFGoPYXEwDEiBzmgvY0Ieh0xV82YVzKI38jrhYhkFQyFzLs0X0SFuVckfEDIPRLl4QKUF9AOtmHbdfmp1X0ZAlUCGYZEtK7uVYgbX+HcfSEUSV4Wr4u3D3Z2IS9vD+ajI0J2EHO/IdDzdmQ4bJjOtFwvFGTMH8GyBEpTA5NqMHKHwQmIazCaJ46JHeEWcBxklAvp8KDIvTJXhoJIvFEJ+Cye26K74CgciaqV6dBTXt8MhQNIu5viAZkpGFJWiYWgAuijxMFKlYlTSOAYga8gGgZpSMNJ5OnajouknINIYVomA4Twh9AtaMM2bQprbsKvKg4QTMYpVeBUAAaiCdYQDK5Vw7mHsZjNeaH4tHPMXMu0bCrHC1mIRwj8Y8ht5SApghSbKcSiWAL5c5MGdBcVohmib71YYPPabj1W+5wWMZ5RVPVVTLzaIGlWHxJje5mg0YixrWfLSuhfFc9KkuSkNNRj+i3up7ivnTgIiUsBInRJpJKNUXVhTJAjESosVxxKOlJlIUVRA9MiPaADD1yLUqKCC0GnkpEBkvQQ4ko0UcxxA7C9fFXEqsCBnQ+rBLITRICQNMXwNRDKtxQle6sWUc4IJ+RTXYcfYBfr6jwzK3vFlIygR7gYeCArupvzI7akacgBxF5TtPBjCIR8pGmGuw15Dkl02XlBzqH0+lW/hbh0BlKELvQgKklhZGHQ8CkIc3cuGO0pUwkp6oFfCrAkDjBKR8MsBVyEGqD1SvLFOIuHa/ETuggsWAo4CFycIJbRB3hwPGKLI2F3FQd2hnnF7ypwKoBReQhCwXDO3qRt1apV/+/gIw+eFQurh3G5ZRZnUByQO467fMjxrA3gEK9p9dE3I5x3VrYx3nExb3uGEthkghUoi1FeKC3j3IBBX0wPFpeHq3IxF6V0gzD3cohrw4RjmiAItxEWLBAIThIHIX+ISJ9KjRFvoemSPIArEaa5ahkXAlUCGRc0oxcWLlxIyoEglvLZVcEqZSEX58unJryXdS0pcbuNpvwSUpMpV+gfhPy7K3SeDFDDDIAsWSIUf/g3XSCrGxUiCOJKFpJNKDplawHnEFHJJfGKRCw8TbSHhBMq58hEVy3jQmDSAGfdunWkOY+HguMCaLwL+0ocq1YFiqrXLgCGH+BQ0Bcyj3gIZ/fhAKSRfdxCFi6iEPzHGoUlL/xIZSIQbHSRaqGuZdM8dXgK8VfGUgxEiCOFjis40Mj56sEuEJg0BDKltrZ+sLfz2A4g6C5QeBdPHH3IQBMP3E9qkqN48KdQ8bq6YaUis+seOkJcg7AcyM91IhCqTPfTHuITjumIClWjSYk0Y5IKKep0URAR9nSaMp1gjXakZxyuJGpW/+wMgUlDIEYyOcjzXWd/feZffrBmc9CyMyDejd+rkZ3adoqXayz74Xwuiym3SDY9gPkZb25AcjjSCYC9uymEwkLnoMtggnICyjrNdhT4T3+IQ0Chwany2iKwUImsLNQk6TpEI1RoR5tGMyplnvd1ffe2ZapcLQTSyVEgmxexfMEDLNd1wTT36ZuwLuFZq1YHlKrtXSvThnIXKs7AMrvQq8C0BaSGMv3aG8ztxXzacYiDiEDk6kLIiKiCLybFh8NJRnqOk3AaUns+1hchSZLMwBTlQoXuG22eGkSSOmSCR3hMBhleqgRSAtNu/04aAqG3r7OO+ANWdr5P7nlxkdbz9LXvr3vjf4Z6ey98cVXwjka1Dg4GiexA9iqW3/7vfnZjgkI9OLIrWhs2s+KLayBe7er/KH8t8lpIcBDK8NgLYoE5WE6AQMZIRtA3sGwCMB/WKcwcRJ5eWsuE4iPLZZiBiNtoTgotEopcv73RaJSsddUyDgT+qvL4OH16x07z+dzu3LL+J8HA5lP5Kw81B+2Hn6HWT184c1btsnz39kclPfFofy66tq2NdWE0LpmF3kZvMpmg3veLC1Wzaym3Oj/oZLcaDmKwyHvuYepr4Q9PMr9/CIM/kH+8ggFfCikQxzCWgSsoNRj5kRGFiKVUQEIQr3xMkRROQEQM07qHkKCEiEV1BHHgD6k8dBvWRREcBGyGzNJVAiEgjVMmFYEQDPL2rNcizZnreKrv/5pP3ifZc98X06bP/gAL1Syw8+Gv1Gl1mzKd4TVYZOclVTNe8RS+IUgHfcXBuAX/mzdjBvPXrGFs3rwSiuKQ4md5aDvlmRtU66PhOt1wF1hm/oNSfuNxkj10kFvoDrtWVtiZKJ7K7drGCk88y9xt3YSt43ya0mlSv2XEegmdA0iutEQrxCWqQzyGRK5SFDLNNqRM77T3QRFCdRcUQkyHRC/oHwa4h4bFFgJ3C24k81m1jAOBSUcgc+Zwa2tfcH1iTvYova93UebRh1jwvm7mtM1QZEQkcqP7EFkNH8Ik42zkvrXdQMspaqgr2jDYiRSe2/P9UmpGA/K69XJMyvCl6Zj2jZWgYlhVqgHJeaY69o7prlloVP287FsZTN9FaLoY7fEnn2XmunWs+NxrsFxB7xAevHG+DJ3GLWStUuL0mSBq1SKUPglRigTjEf5G5lx44hkSTFAEMolZ4CBlYsCFUhFKCHQUtBmiBUAhiamqTgRS1UHKMNrNftIRCMFgWgPrSqePulo6PD3d6Bmal3/mL0yfuhkTo5qZg3noUqIe6d2xCI0ia7Ki1cHjVier+nwJk6dkkSwXIzTaKQ3MGKUR0h4gDSmFsEs25lrQcYlfQL9Azqwsclt17WDW6xuYvb4LPg9C/LcGPfkz1JhW0j9g8VKmg3vAOz5KHMQhSLxCFkZwDY7IXlpimhYCJUIhDiL6SJ3FVlLaZWZEo0wxlC415G7dH6IkwfTvtbz1V/q7fHMe/D4ePLdo7geu0grZa4p33NZY2DDAdMzVlno7kckExq044vjiNcyPYCEaJHYwkU2aFGsRrUujcXkj5COMpRGdWIWQcRDYWETerBQmMmHVXG8HlpXejvnjCHjkFBEsfBhvAVggN2Vh1Boo9RB0kGasQVivlcQr8czy/ZTkrmRjoC6UuYe4WlkPx6S40/MjMXAQhW0wXQ4Zr1r2BIFJSiCMLcESAL/vDu7/4KEfbY11df1H+vcP6kXkp9IwwU8uIpF1CrmoYD1CTnQoGEBSHVsoLIgkoNEfijH5JgQOYuTmCO8IwC185NDyMefbxfqH7iASLGSRRQSRuKR7cKwQNaECTKe29WRIpCllmDOvTQFHo3D3MdYr9I9jiTZEEdPELFqrRKy3PsLb6GnEZRBegjbJwiXjfUJYl0RVlOcQXIxJKdWyJwhM8IvtqYm/3WunNPP8LZuC6xafeHZTTX3j5bn77grnNmzHvHIosRFwjIgMUQTIjwwhwlEnoDXMPUAZJL7QqrKUKdEHUVGOXtqLyFs46gJwGZoeQhOrJlyoXZhhQ60GpvqCKMHN1GnYEjhPCsRIIX0jBgLBYjqU4A7XXA+pgoT+MVwPD+dhzFW34anH2iGYMoWl2TC3XguGmOw80lDfhFyN1bInCExqAiHAXNTOzeO6gh81HPqRdDQc+T/yw3fXpl9YDSRHHqqszGyM5KXFN4FsAs9pFKeBnIZkEAEIhJZpJkIRGjA1SuIXxCgioL0qQHIJxKQ3E3EgdCwBpbwB3KOWnIT00NHWUBPZTJqB7DWMx2ZgbnAGsY+mSgSiYN4HaSFkX5Ni7cgYD3HPAy3gd7y2BiZe+U91NcrrpUqjbVaPdoXApCcQAsmcFt63qjf476MOPrknFkt0KHW/nTb0+LMQjUAkEKc85KYqlQqUJ1Fn5OfwQTmeY7j2hHfUPOhLDiOLOziHkgBx1GJePKxWWgPEIqy7Xkkc9MNn9eBMbRDBpnS74SmP+On8iZ6vtZGIpWNqLRmnJGMqOJiOCAJZ8z0s2ob8XqEolH5Zevgx45WuCfdvElecVJ70PX3nhY2YBLsl9j/S1GPPNRZd9Gj9Z85hoalYhtnBVCNCYKGU0354KwcPVp7f0wN2d40aBtcg/URrMpD4AdalBhgIML+dTLp6PTzeEK3GEgfEOfJ56MiMEmnPSPG531Z8/26YdSO2hfGOYrUQgyhhvnuodooJsrgDHnXQjc6i8TqmG8oOJMx7al+jkXf3Gn/P56oEUvF158PTHo4Zf+qLzj5fff8nvl134Ze6kqec4Gs1kPEpazTpAEQs+6WAMOAkVKGIh2diZG8LIxMK0gSBOHgNMqQ0ggbIODXmefiBpRkC7UAmxw/u4fHZ3wjXxm+A+DTNtfyaogXqxX9ZwsI/DVOwFkjiQSgfj3I5qklKAtNww4EeUh5N1Kde2y+vMAkaqYpYO39kCPvtjHXDB9ExEGq9PzRl9hf1w1/8mPPKMzXFV1YrTqqAnFk0/RWYiNF6VMzauaGdf0MnQXVKkSBTPBVy9io18KtArGIhmI+hPLNwCGElUNCR70HB0tAkdpUKUQnNL8fag8YRvhQ+7E1bn/IvtfV192SzQaNn2UeZOZtjWjDmnbtI9QNlPNmSVcPKtZgXOUfCGuskWkWi+htq2LuZ8zkIhq+WiUCgSiDjQGnYgfbs0uuDv/zo4pknSNMOPts48NmPOBtWN9ud20MuEkk7OSSatmG1gokX5qSSGwTtUVQtEQ7tySJFfg+RIghJFyjxgkwEQbFVSIodID8ojyKOCnM85AimOGEqOTILjRIHjAHQGSAygaWE35d2Qoc+XIjM+PfGWu1FPJDLQ0NzCvnCCQM9UMSRA06XCyzZMo3psdgvI4nE0+ne9Kf8ACbikFzkIemXDVNbHh/nlaundwOBKoHsBiiVp5Yv487yZewRsIs/ZJz5x/DZry/Su9483uhaO93u3dbIC5kQh/c8QJYQD34QWllWzPdGI4JQgNzk6KNYKnLSUeogZJeHp16H9QnEAcJQdRhgY3AMhkFVVMA5yIuuYCagqmJ5aLXNdNTD1vihQ25902y6fUEbF+sLgq8YqVzvP5iZXOsgll2jYMX6plrKw/UGWNB/rWFr3GS+4SCriGitkHJ/tNG6ofSA6t+JQqBKIBOFFLwQcZX9EdX/+Pj6YOr7Diwc4m967uhQtusAe6hzpuJaSdku1viOGcXaG7AaQTMm0y/5IoIM82FZ4sLpqCJbPJLNgWAUWKckWqaAOAaxHKFvlLKQaKqOKMJo4OlT1xX1BSuL2hG/bG7mY3QHM7VtgZ1Jfbpr65AIca+pVVndlNZMJJn43kvNz785Z8ecBAh2hh+4f4b68e2GhplVy9WEv3ep4vCQtZd3VauPQGD2A4F++wdZZJbZW2Pb+frALDarXJqmytrhcNafLhdWNyqFJ1GfMgCVwU2Wq1IT5E4hnwWJUTql/sGSto4fHuB621NFtf3+jHz0421t8bUjDxw+ME1zztCm9Xf0b9y4YNNGrCgFb/+cw2Zma9uS36ppqfsZuJeV6es7wHH5v3VuHvzWIcfMfX3nNqq/3xoCVQ7y1jAatwbEID07wNohYjUFgRTDvKdahHDUx5RMu2f3H8itnii3NkLUQuCv4A7DWjfoBFoJU2HeVXR8AjgHbVO2XMl43vHCfwy0GU9yY/7L8fMO7mKP8V2ibZHdLl7o7Lkq0927oGu7CeKoY22zm4N4a/K/QBxQwpEDiIql92MFkH8FcexCYOO+VPXCGAhUCWQMOCb+I8hk5ub6e75ucGtBYA20SsxWwkpR4V6Pys2tOnPTckDea/gkOHwS5OsQrnjaY1ITiAkJ5KVeaAdv8EB9Fstt/tlUk68xf1Z349wTsXInuc53LStWrJBDqcLXB3u7PtW/A8uthaawKQe0+fVTa1YorXU/BnEgiKxUYm2xQRDiQPl3db/3ECjz/L2/c5Lf0dcXxELOtsN9a+BwxKUcCEBOV1UZQSFWNPBzRuDbUDbcANkMiQNYsB5nPcdKOa7XDevwVk1W16Zd/+WIne3JNrTlWltPB5vZPVFUgjqbLny52Nd39fbXnq91eSOrn9puJttiN6pR9XvhcHh7Zd3q8duHQJVA3gYMIWIBfo/JmzczpVBoVBSlNhSJ6CHVc7W8B2UCua5MZEXgluJsyzt23hkoLJhdtNoyCQ9TEj2M9hWzxvfcETxLyvQPnWNm3B+nd2xpUHTNjTVPfTkSU//TqI3ejbaqGdr3DMJ9ulolkH0C27t7E4hDKaRSHwt86f/lBux6LvsbwrHQXdEG7XbOja3vbm8m19OqBPI38L17tm6dFY3EvgFXuuo41gOJhobHwTF6/ga6Xu1iFQLvPARSQVCbDgKsylMt7zYE/iY4yIVn3lIz2JcL661afuXKZcKLXAmopUt/G9bzacXQY0ER2UPoWlJ17I5bL5oUcvmqDkTob9iAbA49TDETzvwVK5F4a2yYYyW8qscTh8B7mkCuX/q8+sjm1y4tOv4S1/XiyJeQ0kLqr9539PSbOzpKmdUXL16heZnCv1u2cyQSJVA6WgmTYbHchn/frx9e9sOJg2Lvar5x8adbQ8HgubJjTueykjIV/Xezb3qQPO3vWll/yWkHc694ugKVH9axBrIgq5Jc4GH9HqelaUV7x63vmQGic+nScN7Zcq7qFA+TuOJ4PPL4bTOP/G1HR8ewc+hdA9tePeg97Qd5ovuN9+cd71uwAzXT9FVaYsyxvBlvPrP+GbzlK/SmkcgaaWCg7QPImPjBQKTtAM0DU0y3+I4pr88v/UhCK/ZcLQf+EsRdYWKu62gsWLjh4pP/cdbNDz+/V19gHyuvv+ijZ6tW7mvgE/MQ0h7RxIxDziJ491zBTg2s3n4Pmn5PEMjz1y9VrWe2LjYc67sIv0kG3PVlKfepz2x6Wulg7K59BMG7chvGnPduyeft47G6UpPrFREAiHUC/SIWoXRmZh3voNFeTweOBKaHaX8e1vwTm0uLyUjvWEh31NFOVAP/E67nxRwvkMDddCxfcAy33SWj/Xrnjl7/3GmnQIL8T8yjPcr13IiNuK8iFvYsIqrYxuZ6TiFqFd8zI3PNM5ubuWOeiQRF9Q6yazvIbCcH7jTJ9y7+0xVXIOPEe7e8pwkEcyfgJ6BopdECk6cvSZh0XVl2J2+LSdyVlfbfseY7bZDldHxshJgHiJ0SmdQl13Fb999Tdt/S6isW12nFwjdBBW0miMKlZ6OqDA4bRtaUEMJWAkW2rURkLIx239y7ctbN5cPIoFLnYFUrD/CizUa/4URtTiQyVQLZ16+gq8HvZZlvlbkOCUvCTDk9UBX5jbihv7ivbe6P+zQ19gI+b4ay8NAIowA54UXPSuGQEPv2xzPGayM0lD9VCbwjzeHU7aRE4vmYGKKscxTjh1hU4VqEtPyJlPXx2ni3z8vR+CCXlA0EJ4IXbRSHhpV7X57Hpo6Exrzb/ZrI897THORX913ySqLOWIpcz79WZOlZLGP8P7GE8aVf3PuZ9RN5uXeqzpQb7nrW1yPfU1VtraLIGQQodvmKfkeG1dzyTj2z3K7vUXIGHxarUiFEw3yT14Nw+PPt7cf8n6c/tuwrLxRq756/ciXyN743ypxbHuzjWuQGlyt/AazSmqoMeor6sBdv/BHv6NglGPO90etSL97TSjq6GNxx13mPYP8IhVrAOfaOiA1om1911VX4VhOzqKAfFEh4zfovfvxBKJ3Tma8MzFi2aPX0Bcve2VEb/QzOPb6dJhnS5wNAaAK6JynyE+03PriKsQd3G+BIdf/aZcbN9z29Zukpp0uuciCW1rKjB9e/NP2ffo6gzPd2IQ49UpaecX04I6lJVmRToeHWFRwLUamYHRrmrsKNXkXyN624/8KeYQQZuW+8g0sW31iXstTphUx+OhI8q6qiF0MRY918Xd/UsXKJ/fkLVkwJXClsYZFi1ZO56kuZPsb6Vq5cImKUOuDf6PWKrVYGCrrkwfihSko45ho1Suc113xMKOEXXnhLqH+b+1vL9k9Cjly8D9g4xDFV48vvf3TZsvH6Ru/a54XaoCzOgBzf5MquIjtqKhTiW/yQv3nlyksHx7uXCGrzVRfprw/EAqxc5WEyLGaLb5ZmzMs7fMnKkfiqoGOxtj3dJpCZ2jJd159zzTUjxoMXLzyzJuqkopLtSnJtxOlnWnrB8t8Wdn5usHiFvHn+A2phdV5R5e4HpSA4ziMqAYEgAMz09fCPvPctujq0aZP0Kp6x6Jqf2IjiDdb95DI9/ZolN0Uwl3e4ZBLbvfkdY7kLBgbps9M3a8ortQIfevJ5buOeYxIJC6PG7gclwODFixYmDEkNq9miEshhTH9kVsrQc7t7B7JkJSxdmj2Y9F7obOHJ1qflGS2ax5ct3+OgQj6e5NrnYrrCESydkgNZCoq8xq5p1jNTf7wSAZ67L3hhvqZjsRqPA/7bSnXa2qG0XX4NYFPyEb1x8ceRJaMY8828inXr3Vho9lDr8uVj4C8AAl9Cwk3n3w8vwvFO4CM6lc8DG2/E4kNIIUAJkCVHVtROTOl8AdOr7w+Fw/ff+dtz+3ffNcY6OlYpbzy/5QTHCc42He84rMc9M/ACYLecVxV1tSz5KyMx7c5cwenggXIIZV3jyE+jKfz+SNi69qZh5Fz66duPHsyy//BsD3NU8caoxLnS49jmP9+76pI36dy+EMji02440rGVT3iu/2G85zw/8GvxkgAbx9LM8kaYWJ7UFPmOgz+w5YndcZXtF3wy6SrWZ2FBqpU5KDfwZVWW8gDTA1NvfFToIYR0F2x7+jzJY3MovxytmIZkDTu6j5hyS2sXU60dWz/ELevjyJY4HaY3nStqxpXYGq5G7n/uo595bsmS0iBB77jlS+cg30pmkWNZSd82zwGBYsCh7wLKxDqDXA89zWX9YSVwdRDL62Gp5Z6+Exvt5OMvn28W8u2ALgwbAn4cPX1+5g333kvtlsvGS09q8j35Uu7TSg6oJwUyRrOcHKu5s/WHd2wp1yvvt33x47Nd0z7Od62jsPQ6BjkXK2DLHubfD4CjbXAl6UXHjT5x0O2/EaH2qy48MdRuRE6SLP9YrMsIm0bAMTWf20bomRnX3vNAud3K/aaOC0N+78AhWtE+GpbL+ZAd2nzfCWFwRgojBYuqBGtVXXqkUDf9pQO/f3O28l46/tPixUZrorgQwdTHYDk6H/oigCCn8F2v62xtYY2dXcf5ZvFkJB2fg8E7KpP/SNVecSXlofap7/9TWfQTIlZQyM1HIzdjhiisM+RvQNYOfABgZInUMOEtcL2ZwM+ZyB9+KjOLh37mk7d/7+e/uaB3544txnyFv9y46TwsBXYlrI/tlGGcNvqaCGyNBY73AbzcEbzotBaLzsmYkNqODmJGnYKli+3XPb8wMuLmXakun7NOKOECWT3wlX27l/sWkkftQwFOLT7tllOKxeDfPN87kjKTgDjEu9IQi18avt2Bvq8c6Hnuh17549Rv4vRvdn7SoJRviJnW1w2JtZBFRkGOLO7xtOk5XagrCGTelVdy//wTLwhJ/CMgQuANYOnKa2pfHXraK2RPlR3rK1C2p+DhND0E74VcVj47C6HyZx710C3/hjO/Kj/XNPOHhJ3iP0cCvz4r+lu6Qn1G24pqmR+C4epDUaQRQnKT3xWU7j+wvsasWywsNVzraIssRoA/iJkVPOcW3DaGQKCsNMmF4pUhBUwcF3VUxvtnue48jZ9jCGTjpZ/4ECvk/pXb9kKDY9EH2NBE/ynrCsET74o2hmTdXoJ7STxmSTti+J758ZgULM27yHuMcypuKhal6/AOD6Jr9CojZftlZ7UVt+64QHW88yCNHahjMg2gJJ4jMBIzCAilkPP4fKN/+4rXP3/m9Qddd/fmkQZwoNUOaRBMPhIKvCs4EJG+UcFmg2ai/pHkti2LmGVergYBrI5oCB2gtE4wRZ8BC+niTeuf+k6wdOmdfPlyRxCI7RZ7fRfpx0qibQkR6TVRwMQFEnk+OKFH63rLscBi/+gHlgrOc0VZHBKV8ce9Kf85z/F/4Hh+FBQvTpMFSuLIdYt/BFAAX8vn/Cs85O30GImhOA+xXtd4bkpTbITlclVChlvHdn1PKKVSSaywGTCr/Ly92X/ylOXn5h3/h/BfNFHfSv2itf08ik8BLJCJF+fhU2EyiARqzzWLT7vVW3n/hWMQSi0q1G/HRC+IQAj58RFtmDJHFE5gh7/W81Pkm6CPSRggc785SA9c57jOUXD6qyYu0Hna6BvRpsv+wfAX/HjdsjPMOdf/lpx9sPpA08HIa6F5amvnQgRIhE5psWD4dQtKniVjkcAKsHYu+UYw8hGBYPRlrgKeVspXNNKSH4Rwu20XHVelkz4qI90qMnGPnZ+yYenHT5MLmeUg5lb4Mhg8TwLxNAxcdJ89TLzIY1wEy9xe7qenARWdglNE/030h0qADCxQ5XYxJKy55KzpbiZ9q+bYJ9IgDTwCniOpBZ5BSE4rA9uAPsEK52YqnvkN3bQ+svGS078086b7/iwap2tFcFYsPFEEQZKfiArGxxDPDl0ju/axSPWt0MBBWE59p/ZoA/zn6rL835v8bQU8/i4au5gjJXoVTX0WywI7gN8qXWNXhw3t0nBEvkBXpG8ic81LQHGqihfDB8c3sx1+kpfPtImTw38uPv/nB9im+08A3hjikLlsK1LwtMzdXyJTx19IdgZxUINASuoWCnpp215xx+bICJKVLuyfv5ee9Ys29PnrQJhh4kBiai5nw4ZyXciQT4vVyJ/QdP4LEDEIlPpH2Um8KcWCs+zCM3+zyxqGBNSdtzE9xWthgMWX4YBzqS70hlruWMcCiCqN5hFFYREV+bEADypUzwRCeK7XIueyl3Z2LKVlowixyUChasiIIhRzOlkuuEmE1mBOu0YZVLCAibgJ1/EuI88u9YE6JR5Tvntkjytj6o5cGD4Irlhs8GLuK5LnthaGiV70RZL74ZZ9COm9H4d+sFGFLAleuK2z9cjNlW2g/7u0XxqCR2u98oXTasNe7kuy65woCAOwoDo6BQ/JcrcdqC9iBlqnDmkDQGEWBgYiOJ35C7iV63j2S5/EmhWlMrgNwwKosiQf0MBBJTAk1zoeIrGCkBxmEPwpeV8F/It4Jnoa47Z18dNLTqnFk6CmHD2lUPfKjv9yis4dUGOelePx1Pz5a6wrr+wIli17XjG3/+Wu/oJ0LzLaHEA05xM74vIUyM8H4vYt1AaV/t7iZ9GrGciiIX7TCA3Zzgrp0lWq7v2PW3DyiVgyNpTPfsMsBp8DqZWoTtTGS2AETqe30Lfc72UoZ53vecFBABr6ThxNsjRdvqUhHvnW8pVLRAAkjAov9LpqLYbdRS4ImEZl31cPtQqpo9Chh/e6U7SiTQU+gl/gUwBDJSkHk8BdZhA8hvUCwU2s82XPjxM3okIjJ+brHlLs7DoCP5+yde0ZybO/gAGkFmP619D3A6hvhKDYHLT6e1NR7gRS6bKubu4cCqfmOIjL2Y9lk5mdA1HlUGt4NBbmZQ6DhqR9y7Lch7iO+V+6kUT/jgaBWyd2dIwYIybWDeROdU/5YOBanyXuRLCgYYOe46vqfVzXv8M8bQfOtfpu7ouyE1xAPmQQAMRGD4vQ8ZPrc4WP45Zb6HlthxwSsNQaAHR0vMUPitbD8I75/6pyh+W6T8myOlfm3nnI+t1Gjkx6ZgGIDiZ1fDJhzBcI+hgC/+Ycuv7pXz1w4T2//v2yrvnzmbdx9byWJactP6xv01+OdRR1JhqGYkS30yfHv8CPO7Y3TZzAn6Wk6DtsIbSXYaQHKiAdOrjFk8kEu37lb5dt/c2jXx649e5zNteFY99RFe1NGau4vBvlsst+ETdt7zSM4EJUo2FUkfl6ZBu8uUQcNDOQcTIOSIZ8B4Z+WDJwCh8JyFoHRD5m7/uJb+GYBRDjyEBJnBPInQk0/fvF6EFffsls+HlIM/6Jy8ZPkNWkQGIQlWExKh5kC/Pp90HX/npr+/Rjfz3LbrwNOlv3cDXxMaGXITe19OqcmSf88gWr8fbprUc9fuzKlUUpXyxXoybedvGGcnXQTZGkqFQIFSRJLsqGsWX+yse65/3iya7ZNz302vRTE7fmQqlf4TIwceJl04UXJWTLPwUxbY0UmUAF2WGQLklZrcUTX4MZ+5nZt9yzrf2We54FA/mepEp/0CDaUBHVwRUU3z3n+Y6OMgMl/5D4jKIS/lBtCc40WVO/a/jKZa/YTbcp0rQOGEb+PyQOSJc5OQlkqhREFMdZMIKhV3ZcGVzw8nUNi0+55SMvPJVZgmW85mD8w7p7fixvWYjL85HGbPidaaQDz7SwiB8wiCghGOpLtUPBb6PRjwou0+iWBydbVbZKiQv4M/3wN3f0rpqCHE9SRUxV+er+33dvtg9HN2eUvxmIGyMUQyor+6Of+ugNJwT8RhD1DQCg7Lq2OxfiH+BSelsch6EEzaVkCZWWpYn0EqhLloWRqkQAniS9VlSM5Yf89KfI6CBK4dULTloZDfj5gBe4bwl+6F/I5X4j1cBtAevoCILLZvOgtxENjrZJHx2MSRoxx65cSWf2e1FUlQLhyI4usIBEIDlw5spm7oebP3fGd9Oy8qQyoKRg5ia9oiT070UvAqm7CYsQHUtKfrkoMJk6qnxHt7N1U/kc7aff/Mjray/4yD1a4C0EJIRzjPQsFthHGl0vzkCVNVRv50IiKsyl69SEflPzNQ+WfTDe5ks/+jj3pD/Co/Qx0tmoILCPaa1NHxUEcv2R16vnN962MJvRv2E5zkICghAv8K1opNi50DkiBNcS4rq47KhBY2AGFdYlquRnYQTdsPP9HfjYJx//U4yYsN6W8GHnKvv1t2U5QDwOYi43i767/gG5rPt9IuTRAtUN70UEVCqlGzA4JP/8ZxMZrIVFYbT6XhzRUzCSkEi87fX0hqHKWy1f6Ytzpx/PnjF6PoA90xmx6NH5zVmBn6NV3s0jeTrM6lvegNnqWApzIchAnIbWah8ZuKlf1Sjqy0FEvnvdl8749eyGI98sm0kn2kWfe/WQsGeW6YOGABOjM4TN5468/gWXLa9oiRy1F570OrA9B44aE5ZSXAY2RQzXnoXDXQiE+ivwVpL7ckbLmDlFRdvL6L63Y4RboC4FfWrh2KliKHqkSTspZXq32SQiwYrjCusTpdFnWAVZSimS0qlIMmzNlciEViqKh4ROxErKGI9jAJHb+MRjOlO+BaPp+I2VK+2nvWnxCJBvDLJR0yS/ksOtcqNzEkTDyg1vpUct8MK3WegjgZP5Qm6qaCuW7of7CUt7lqVTXCNA4uOUKLSi7l/rsP3WW1NBSP+eL/OuEBCDxBHqHFmCYBVExL99hO5aV6uZ/F1bNv55CTn4JtLXMsJ4uWwcMECEZWlwIiMG7ItDnu0MDj9qTHOQqNIQV/MgEHGe+gJjMGIt7LoxFXf6QSuFyWGy942WaLIuwDowu8Das0ymnPPxG5oyWfdfXF9qhg8Cd0E0Ai4g9ulNxIU+CjHuVTiA4CTUzsnk7E+XFfDR5ktHSOXvEL2Dtke+Kj4wMsvKFVxl9C4fowCM2+9KgaECUfPoWcXzAFhY7NQ8To4ASxwNizjDbwVhhkyYvLfl4APH9dpO+CXwJAneuAnXf5sVK9+t3BQsNBVQKJ1FwP4u58r1K/czb/jdvesvWmTIbvGfVN+fD6dRiBRb0hnI+kMWuIgSHADzxg+nbXupB/c+Wnn/no5dKNOkcwArUK20QhbETQxru+8bzLvoM4abSmjSGaRH3tNzdn8NmfXZGKY+XA26qiRpJ7ue+SE4ZHCSeICCBR7l1+Ix7ZsH3H3B/R3w/VDtcz/+8yMkJPkDLHZbNMkdcpiCtZiox4SLGAu4HEfatDm73IA2lIVKfLy2dqn/Nk+ENSmVc4dNa6ItjE6KtNUIqTdCkEFa9JIDCKsakJg98jSgEl4GH8vja5YtWzDinxmp8B4+2LSjkzdA9qj8XILUuafQyUrEUuGPIs45kTL7lgd/tW3pJ9Y4Tv5syAcfhm9iDlCk3kULhCg5iCaGEjRLTuZLqzsWP7lzWMt4zwjHaop+3rTJP0QYLqxYEotLWjgx3N0xHYQ/Jy47bqSMQwLrMAgGqjFuiNB4z97TecVyg6vhhhoReMgECsPL3QccPvXBMnFQAwXLSe4JhvWR2PqCZXWBMTTQByA5HuQfgbh6xhWXrLj+xzctGen4Befedkg/sxeMx4321OF9uZYwtNfypplC/8U7kN6B91Sx+sCLd9xz0e/3pc33+j0b7SG7wfOLZAqmQohEDj2fKVOfvfxjiEFiGXEBfzQ51O7LluqUpJvy6XH3U5ff8youvrodfgfPNA9ktvVN6CIn44OrRJIWfAWS5xwj7cjPQL214zaEC2XkLzheH3wSm8HM5tuwUNAwFYXYwl33GBgoHsc2QiAdQYekXvzEQdDoYkSYVIjvgLCGEDT4ujixn/5IsFS1k/OvXAicGDFbOjv7IuVz55918xG245xCzrPKAjQb6XTzYZ/ph2nsaQhoI+cChE/gBY7cuCXzH5/+xM+P/fznb5ty9qLbFg322D9GfNaUkh+zssV35njqYaG18F+9Cs1CQJPeF3O421Jp59v/cNrtZ12/9HoR61V+On20KxavMC49+5cHXbT45oby+b+l/eIfrcB8Kj8NDBz5HsLP4nuHJYsy+VdEefnrn4RxpfB5aBQiDqt8fjd7vv1f/gWOuFGRtO3a3wxMxzx8NwN3MhwAAAp3SURBVBL+AcL+t6hlO7W4OdCRFo9klwkVRQ96Akl+DrquqE94SB7wwHHP2dj3+uzKRs796qszAts/C+g3goDkJIUP6JmNhttZWfftHsN6J90ky9ol5ECjggBF5jDpk70b0qlPnLb8YcQmTB0acj/vIBC1jNCCRQMYyB2oLF68UoJl0evo4P7Zi356q11QPhV4vJ6+C/0DUWmwEn/WtguLUmk/L/lSAnJrc7mtt/sCE7m/o2OJveSMG29zM/6HsdANPhqejomJmJp6FCxZP7t3vXTeGSfftBo+hTwC77QzfanJ68/MgUmwRdf8b+MZ74ztdCKd38c64JLBuvNPWidj+nG50GgLzblBtfL/se7CU+6Fop3zuoaQkM5diGslVlOuLPajA+Izl50X87peuHbzhSdvdZTTHzA1eQM4xUBbvIZne7rnQ1KICScc7hMNwcQfaNq4Aa1jHoMfc1tPHNyy7c8PYynrs0BocZopSbqNJnnzWW7gB69/4cyr8563JWY77epg+svwwR5nkWkXZVhrQTCY/suPXfPg6AuLq2/vDwiEXYcI4jMCT24EOhPqwHzH6ooO+7LksIt9xJhjrYvoGKEVtYh1hxQpDKeiTARC3fCj9c/FpNz3Mjn+fcRbgbpJzCJ26WngNm1UqxSoIvgM6AQKD0aBt/cKE7u7psW73y4qv0DPl7mejWGKiITeV2rE2HAmRrvTqMMAOQZTj3w+CABFNl3mktHpb45ABFSM8ENBzvoyEChOqESshAhBtuz3a7J3KKJ2QRvC+QdHCkyWI+Zt+iT4bhZsGMOldqgfgafmiYiHq1Uc++KYxbsjrj9UyKYRLBPMcT2/tqzHwN8Q+Jr+p5S/aAdjd5eb2OOe/DgbLz3nUaY4K7XAvwTxd6K+QBLLOk13nSNgZ+8FliVBiK14DxE3RpVoqrGt6SsSavR3e3zIPlyUjM3Fl8O69BOsZ+EI2ZzwA/8Q9qEjSrgWjhuIgpKry9IbEFGQhJkMawRA5DP3A2P16u0j5k8KXJx2kPIzxHB9R9G0QXjKYawieZ96VrJwwQRgG6ryO5iPH8C1McSBOAne1Nw08how+1FnhEWYnimq4/dIhfIBbBmlx4hapf6NtW+w5cuXOUaDeyUCIm9QZNUkLz/dRAQMQpE8z9Fd3zagFyFyzwPwcR62BMlTDkCdMf0cfqzoPF0YvrjbOnjvkXoEgtHq5c6X96P1KtrbtU20UW6kdBH37b5/zJ4Sehrp3+8OAWHL0o8gEvQJgY8GOIAwzSOCtQ8m3CfIdCvaxh+QDmwy1si3DST/EEAL3D/QEEqShPl1PhD1OHjXj4aZtw7wApHBbAn8wEfvCsLyfy8AzMtvhwbH9Fv0vQSPkSozb7yzx4tEv49g+xcMWYZFWdQCUXuy7zhtIOYj8OzpIEZEP1LwJ2dRVXFtSX1Yqan5Vt3ylWNdCsPwplbK2/A3GHlm+QCD4y79oxPS8heWObHW3LWhUPADTdI6ZUk1ET8Fh68C47ZSlBWp1wir10YjfKmi6WsxrWkIPoJBmD+HOKfF9trGyK7/+Z8X5AcLW6+KRqVPG4b6S1WW30Sb22FS3Ya4oxe1kPSdZF38AqBcJ55R7p/Yw9FZOOr01AhfpyQlyKE0gG1QPBMr8iFWYAih9CXeOnw3LIOwh6NP1C9sQP5BOCl3SXlz553L+k84OP3VREz9oq7KjyOuD5PA1DzlacI7uzQQIDjGxvk8BoNBhH+s0Qx19fLlL4zpKI/4WHJQ8vBupQ3wgjUHwUgVjgz0zcO8CrQxWk8REaa7EHjehTAH0whM6yN1ESEMKXBse0oejkKSbCvqwQwJjVh8/zGwpB9kQfJizd92Nf1xBOYVSUknPaG0YcEeSfJkVdmB3ElfR6DGjRiJxfNBKPQ+GMOMkYQKYZU3I2gwBx0BejCgDeyhJd8IiRC2Q21i4Sy5KKnKy3Yk/OWZP/3dU+UO5QysLoq3xvv5ozCDC1ka+35Uf9a1v1mbTUQ/hwjgFZiaO4A2MU0OX4WGSTyPnkvxWRpWK8UknF5L1a93axIXY/LU+vLzxJ5sp/CLoM9u+Zl4f1pJUkoXac7UaMkhihX+EeS6GNs/BLNSSAVjt956BVl4/u/5Z/78/myheAoCCtowusIgwbeFo/rjK+694ImFCzvkKG++wnWDGtimMeBidXoEq/X1rdlF5nvssQ5C8odpu/jiO1vT3YXWkCpZhzS1bf3G8pORRTOQTv/wzXNombJSoZEc6WrcoPuyyy6zL7/8cnHawASWVJBZhsYAXgRIuph5x/WCF5K3DN/IPpaPOLfwge/bPruV85LNHE4kjojkzeU6lfuv/vir5M+45Qdf//2K517dcQxCsN+HyVxTEXEM7gHTQeDmVaZ266q2zqgJv3D7iiWdv0b3KtvI+ANpxQ/9LwSJJJ5IkYXEkChkfl1lPSXgT4BQ4UMl9xSWJ4Q9FK/+fO98RPBUCG161Ia1KXoPvIWrKdIBUeYYjX0HOPFCZXtttU3u1ox0LyjnjXI9WQNh+/6fK+tVHs/+6S/Wr/7KGZ8NpdlFiuwdj860osvANzntq8qrgRG6feZ19z225uwPHWFy9nNYhn0ThK0xqYhhe3u5LTWcuC3vZfslbh0Hc/Fsz+FJtIOFFlEDugyieLe6THnOVfU7D7jh/o3shlEcNDzJgjT3dMF1EzCYkj8BEeSICPc55Tfbpcy/5t4XMRvyQv+VjadpjnkKZP4DEcDYgM9A+Ooi6ryPKeobQSx65+3XvO+JDt4xZsCkBjGTErZn9jK4z22wzpGFO7Aw/iG98Rt2U5voQ/nB3UHUmoE5VnnHDZf7h++G/zuxuPINYF/i7UCsYxCjfP0t9vxHi1eEvrpyybiOtcWLlp+Qy7P/ReehzJNTiEYIqRBS5E/e/YdLHnqL9t+Ry/TO+/i+70h/3olGt3zj3NrCQLFBDmzQqp6dc8NdO8SwvFcPC6Q3v3ZuHe/KxB3VNch9jXiLXDoZ6jt2D1Ng9+oRlZUxSr/8hbMaop5VY+Y8NRT3bTcaGjrgh/ditiJYyjtcRsl8Pz3o3HN/WusNRi51pWCjz+xXGyI1PdfPX5xlVzL2xfPuSPT0O4dYtt0BM+vCclgBxWSBja5PxEIfu+O+88aMwvupW9VmqhDYJwgIEWuf7hznpuKgPN807auJpUFq3NZZTG9ftOr6fmkVGIUkN4FzzUeQW7JMHKT0k84DneyRzty6TeM0Wz1dhcBfBQL7nUAwJ2Q+JibpEJ3IdDgXasZcktjIkwtrC1lHhHmV3pY0Tij9CPsI/lxTo/3s3ruE7vJXAUT1oVUI7A4Cu1hUdldpoudozgRsDMfJMNeCEqBbYX43NpiMBVGIY+G1J8LQYNXApkpPKgb/2m3/+1kKX6iWKgTeUxDYrxxkzZI1QeiUGXcjOUGtGUhHwyJQT1wCHmvQC/gIzLoKbLmYFmFpivScprLfxEL817feffGWv3cF+T311audmTAE9ruSjkwn8hQnH9vBirMcOzovHpI+gJlhn9EUrG4j+c9mMvY9tld4Lhaor20ubOkfNglPuMPVilUIvJsQ+P8BO+psocxLBD0AAAAASUVORK5CYII=" alt="Agile Infusion" width="200" height="102">
+      <span>AI for Product Owners</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <ul>
+        <li><a href="#basics">Basics</a></li>
+        <li><a href="#habits">Better answers</a></li>
+        <li><a href="#product">AI in the product</a></li>
+        <li><a href="#work">AI in your work</a></li>
+        <li><a href="#prompts">Prompts</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="controls">
+      <button class="iconbtn" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="iconbtn menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" data-open="false">
+    <div class="wrap">
+      <ul>
+        <li><a href="#basics">Basics</a></li>
+        <li><a href="#habits">Better answers</a></li>
+        <li><a href="#product">AI in the product</a></li>
+        <li><a href="#work">AI in your work</a></li>
+        <li><a href="#prompts">Prompt library</a></li>
+        <li><a href="#exercise">Team exercise</a></li>
+        <li><a href="#tools">Where to find it</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="mono eyebrow">A companion to the AI and the Product Owner class</p>
+      <h1>AI for <em>Product Owners</em></h1>
+      <p class="lede">The ideas, checklists, and prompts from class, in one place you can come back to. Bookmark it, use what helps, ignore the rest.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#prompts">Jump to the prompt library</a>
+        <a class="btn btn-ghost" href="#basics">Start with the basics</a>
+      </div>
+      <div class="hero-meta">
+        <span>Works with ChatGPT, Claude, Copilot, or whatever your company uses</span>
+        <span>Last updated September 2026</span>
+      </div>
+      <p class="hero-note">Agile Infusion has no affiliation with any AI product mentioned here. The tools change monthly; the habits and the judgment do not.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- BASICS -->
+  <section class="block" id="basics" aria-labelledby="basics-h">
+    <div class="wrap">
+      <p class="mono eyebrow">01 &middot; Start here</p>
+      <h2 id="basics-h">The basics, in plain English</h2>
+      <p class="lede">Seven terms that explain most of what you will run into. You do not need to know how the technology works to use it well, but these make the tools far less surprising.</p>
+
+      <dl class="terms">
+        <div class="term">
+          <dt>Model</dt>
+          <dd>The engine underneath the chat window. It has read an enormous amount of text and predicts what should come next, one word at a time. That is why it is fluent, fast, and occasionally confident about something wrong. <strong>Treat it like a well-read colleague, not a database.</strong>
+            <p class="where"><b>Which one to pick:</b> most tools let you choose a model from a dropdown. Use the newest or most capable option for real work; the "fast" or "mini" options are for quick, low-stakes questions.</p>
+          </dd>
+        </div>
+        <div class="term">
+          <dt>Prompt</dt>
+          <dd>Whatever you type. The quality of the answer tracks the quality of the request. Situation, goal, audience, constraints, and what a good answer looks like all count. <strong>Vague in, generic out.</strong></dd>
+        </div>
+        <div class="term">
+          <dt>Chat vs. Project</dt>
+          <dd>A <strong>chat</strong> is one conversation. When it ends, most of what you said goes with it. A <strong>Project</strong> is a folder of chats that share the same files and standing instructions. Use a Project for anything you will return to: your product, your customers, your backlog.
+            <p class="where"><b>Where to find it:</b> ChatGPT calls them Projects. Claude calls them Projects. Microsoft 365 Copilot uses Notebooks, and a saved brief you paste in works too. See <a href="#tools">the tool guide</a>.</p>
+          </dd>
+        </div>
+        <div class="term">
+          <dt>Context window</dt>
+          <dd>Everything the model can "see" right now: your messages, attached files, and its own earlier answers. It is large but not infinite. In a very long chat the early parts fade or drop out. <strong>Start a new chat when the topic changes</strong> and put anything permanent in a Project or a brief.</dd>
+        </div>
+        <div class="term">
+          <dt>Hallucination</dt>
+          <dd>When the model fills a gap with something plausible instead of something true. Numbers, sources, quotes, names, and "how common is this" claims are the usual suspects. <strong>Ask it to use only what you gave it and to say when it does not know.</strong></dd>
+        </div>
+        <div class="term">
+          <dt>Reasoning mode</dt>
+          <dd>A setting that lets the model think longer before answering. Slower, better for analysis, tradeoffs, and anything with several moving parts. Skip it for simple rewrites.
+            <p class="where"><b>Where to find it:</b> ChatGPT has a "Think longer" option and reasoning models. Claude calls it Extended thinking. Copilot calls it Think Deeper.</p>
+          </dd>
+        </div>
+        <div class="term">
+          <dt>Custom instructions</dt>
+          <dd>Standing guidance the tool applies to every chat: who you are, how you like answers formatted, what to avoid. Set it once and stop repeating yourself. A Project has its own version that applies only inside that Project.</dd>
+        </div>
+        <div class="term">
+          <dt>Agent</dt>
+          <dd>A model that can take actions, not just answer: browse, open files, run steps in sequence, use other software. You will hear the word a lot. For PO work today, the chat and a Project cover most of what matters. <strong>Agents are worth watching, not required.</strong></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- HABITS -->
+  <section class="block" id="habits" aria-labelledby="habits-h">
+    <div class="wrap">
+      <p class="mono eyebrow">02 &middot; Get better answers</p>
+      <h2 id="habits-h">Eight habits that do most of the work</h2>
+      <p class="lede">None of these require a special technique. They are the difference between a generic answer and one you can actually use.</p>
+
+      <div class="grid grid-2 grid-4">
+        <div class="card"><div class="num">01</div><h3>Give it the situation, not just the task</h3><p>Who you are, what you are trying to decide, who the output is for, and what "good" looks like. Two extra sentences of context beat ten follow-up questions.</p></div>
+        <div class="card"><div class="num">02</div><h3>Let it interview you first</h3><p>"Ask me ten questions, one at a time, before you answer." This is the single most useful move from class. It pulls out the context you forgot to give.</p></div>
+        <div class="card"><div class="num">03</div><h3>Separate observation from assumption</h3><p>Ask it to label which claims come from your source material and which are its own inference. This is the fastest way to catch invented detail.</p></div>
+        <div class="card"><div class="num">04</div><h3>Ask for alternatives, not the answer</h3><p>"Give me three different ways" produces better thinking than "what should I do." Expand the choices before you narrow them.</p></div>
+        <div class="card"><div class="num">05</div><h3>Iterate in the same chat</h3><p>Critique the draft: too long, wrong audience, missing the fallback. Each pass builds on what it already knows. Restarting throws that away.</p></div>
+        <div class="card"><div class="num">06</div><h3>Make it show its sources</h3><p>"Using only these notes" and "cite where each point came from" keep it honest. If it cannot point to a source, treat the claim as a hypothesis.</p></div>
+        <div class="card"><div class="num">07</div><h3>Verify before you share</h3><p>AI prepares the conversation. You still make the call. Read the output the way you would read a first draft from a new team member.</p></div>
+        <div class="card"><div class="num">08</div><h3>Save what works</h3><p>When a prompt or a context brief works, keep it. Put it in a Project's instructions or a note you can paste into any tool.</p></div>
+      </div>
+
+      <div class="story">
+        <div class="card inverse">
+          <span class="mono mono-accent">Reusable brief</span>
+          <h3>A context brief you can paste into any chat</h3>
+          <p>Fill this in once. Put it in a Project's instructions, or paste it at the top of a new chat. It saves you from re-explaining your product every time.</p>
+        </div>
+        <div class="prompt" data-tags="framing">
+          <div class="prompt-head"><h3>Product context brief</h3><span class="tag">Framing</span></div>
+          <pre>I am the Product Owner for <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[product name]" aria-label="Fill in: product name"></span>, which helps <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[who]" aria-label="Fill in: who"></span> do <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[what]" aria-label="Fill in: what"></span>.
+
+Current Product Goal: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[one sentence]" aria-label="Fill in: one sentence"></span>.
+Main customer segments: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[list]" aria-label="Fill in: list"></span>.
+Biggest open questions right now: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[list]" aria-label="Fill in: list"></span>.
+Constraints to respect: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[compliance, platform, team capacity, etc.]" aria-label="Fill in: compliance, platform, team capacity, etc."></span>.
+
+How to work with me: use plain language, separate what you observe from what you assume, cite my source material when you use it, and ask me questions when you are missing context rather than guessing.</pre>
+          <div class="prompt-foot"><small>Replace the highlighted blanks.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- AI IN THE PRODUCT -->
+  <section class="block" id="product" aria-labelledby="product-h">
+    <div class="wrap">
+      <p class="mono eyebrow">03 &middot; Part 1 from class</p>
+      <h2 id="product-h">When AI is in the product</h2>
+      <p class="lede">The product changes, so the decisions change. You now manage uncertainty after release, and the job is still maximizing value.</p>
+
+      <div class="compare">
+        <div class="card">
+          <span class="mono">A normal product</span>
+          <ol>
+            <li>Define the expected behavior</li>
+            <li>Release the completed behavior</li>
+            <li>Measure whether customers use it</li>
+          </ol>
+        </div>
+        <div class="card inverse">
+          <span class="mono mono-accent">An AI product</span>
+          <ol>
+            <li>Define an acceptable <strong>range</strong> of behavior</li>
+            <li>Release with <strong>evidence and a fallback</strong></li>
+            <li>Watch quality <strong>as usage changes</strong></li>
+          </ol>
+        </div>
+      </div>
+
+      <h3 style="margin-top:var(--space-8)">Should this experience use AI?</h3>
+      <p class="prose" style="color:var(--muted);margin-top:8px">"Can we use AI?" matters less than "should we, here?" A simpler experience may still win. Tick the ones you can answer with confidence.</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span><b>Customer value</b>Which outcome improves enough to justify the added complexity?</span></label></li>
+        <li><label><input type="checkbox"><span><b>Need for adaptation</b>Does the problem benefit from interpreting varied, ambiguous input?</span></label></li>
+        <li><label><input type="checkbox"><span><b>Available context</b>Can the product actually access the right information to decide?</span></label></li>
+        <li><label><input type="checkbox"><span><b>Cost of error</b>What happens when the AI is wrong, unsure, or unavailable?</span></label></li>
+      </ul>
+      <div class="verdict" id="verdict" aria-live="polite">
+        <div class="bar"><span id="verdictBar"></span></div>
+        <p id="verdictText"><strong>Nothing checked yet.</strong> Tick each question you could answer confidently in a room with your team.</p>
+      </div>
+
+      <h3 style="margin-top:var(--space-8)">Every AI story needs four answers</h3>
+      <p class="prose" style="color:var(--muted);margin-top:8px">A happy path is no longer a complete backlog item. Decide these with your team and specialists before the story is ready.</p>
+      <div class="story">
+        <div class="card">
+          <span class="mono">The four answers</span>
+          <ul>
+            <li><b>Outcome</b><span>What should improve for the customer?</span></li>
+            <li><b>Quality</b><span>How good must this behavior be? What is "good enough"?</span></li>
+            <li><b>Boundaries</b><span>What must the AI refuse or avoid?</span></li>
+            <li><b>Fallback</b><span>What happens when it cannot help?</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="mono">Worked example: a support reply assistant</span>
+          <ul>
+            <li><b>Outcome</b><span class="muted">Agents send a first reply faster without lowering customer satisfaction.</span></li>
+            <li><b>Quality</b><span class="muted">Drafts are usable with light edits most of the time. A reviewer team scores samples weekly.</span></li>
+            <li><b>Boundaries</b><span class="muted">Never promises refunds, quotes prices, or gives legal or medical guidance. Never sends without a human.</span></li>
+            <li><b>Fallback</b><span class="muted">If confidence is low or the topic is out of scope, show a blank reply and the relevant help article instead.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top:var(--space-8)">Try it on one of your own stories</h3>
+      <p class="prose" style="color:var(--muted);margin-top:8px">Fill in the four answers and copy the result straight into your backlog tool. Nothing you type leaves this page.</p>
+      <div class="builder">
+        <form class="card" id="storyForm" novalidate>
+          <label>Story <small>(one line: who, what, why)</small><input type="text" id="sb-story" placeholder="As a support agent, I want a suggested first reply so I can respond faster." autocomplete="off"></label>
+          <label>Outcome <small>What should improve for the customer?</small><textarea id="sb-outcome" rows="2"></textarea></label>
+          <label>Quality <small>How good must it be, and how will you know?</small><textarea id="sb-quality" rows="2"></textarea></label>
+          <label>Boundaries <small>What must it refuse or avoid?</small><textarea id="sb-boundaries" rows="2"></textarea></label>
+          <label>Fallback <small>What happens when it cannot help?</small><textarea id="sb-fallback" rows="2"></textarea></label>
+          <div class="done"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sb-count">0 of 4 answers</span></div>
+        </form>
+        <div class="card out prompt" id="storyOut">
+          <span class="mono">Your AI-ready story</span>
+          <pre id="sb-pre"></pre>
+          <div class="prompt-foot"><small class="empty-note" id="sb-note">Start typing on the left and this fills in.</small><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:var(--space-8)">A release is one point in a longer decision</h3>
+      <div class="flow">
+        <div class="step"><span class="mono">Step 1</span><h3>Discover</h3><p>Test whether AI adds value. Find the riskiest assumption.</p><details><summary>What this looks like</summary><p class="more">A few customer conversations, a hand-built mock of the AI moment, and one written assumption that would kill the idea if false.</p></details></div>
+        <div class="step"><span class="mono">Step 2</span><h3>Evaluate</h3><p>Agree on test cases, criteria, and the failures that are not acceptable.</p><details><summary>What this looks like</summary><p class="more">A shared list of real examples the team scores together, with a line for "never acceptable" that everyone signed off on.</p></details></div>
+        <div class="step"><span class="mono">Step 3</span><h3>Release</h3><p>Choose exposure, the fallback, and the evidence needed to expand.</p><details><summary>What this looks like</summary><p class="more">A small slice of users first, a clear fallback when confidence is low, and an agreed number that tells you it is safe to widen.</p></details></div>
+        <div class="step"><span class="mono">Step 4</span><h3>Adapt</h3><p>Monitor value, quality, cost, and how customer behavior shifts.</p><details><summary>What this looks like</summary><p class="more">A recurring look at sampled outputs and cost per use, and backlog items that come from what customers actually did with it.</p></details></div>
+      </div>
+      <div class="callout"><p><strong>Ordering the backlog:</strong> rank by customer value and by how much uncertainty an item removes. Both count. An item that answers "will this even work?" can outrank a bigger feature.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- AI IN YOUR WORK -->
+  <section class="block" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <p class="mono eyebrow">04 &middot; Part 2 from class</p>
+      <h2 id="work-h">When AI is in your work</h2>
+      <p class="lede">Chat expands what one PO can explore before bringing people together: less time on a first draft, more time judging alternatives. AI prepares the conversation. It does not replace it.</p>
+
+      <div class="grid grid-2 grid-3">
+        <div class="card use">
+          <h3><span class="n">01</span>Research synthesis</h3>
+          <dl>
+            <dt>Hand it</dt><dd>Interview notes, survey comments, support tickets</dd>
+            <dt>Ask for</dt><dd>Recurring problems with sources, contradictions, follow-up questions</dd>
+            <dt>You still own</dt><dd class="own">Talking to actual customers, checking sources, deciding what matters</dd>
+          </dl>
+          <a class="link" href="#p-synthesis">Use the prompt &rarr;</a>
+        </div>
+        <div class="card use">
+          <h3><span class="n">02</span>Backlog critique</h3>
+          <dl>
+            <dt>Hand it</dt><dd>Your Product Goal and the top of the backlog</dd>
+            <dt>Ask for</dt><dd>Items with weak evidence of value, hidden assumptions behind the order</dd>
+            <dt>You still own</dt><dd class="own">The ordering, effort conversations with the team</dd>
+          </dl>
+          <a class="link" href="#p-backlog">Use the prompt &rarr;</a>
+        </div>
+        <div class="card use">
+          <h3><span class="n">03</span>Stakeholder reframe</h3>
+          <dl>
+            <dt>Hand it</dt><dd>The feature request and the stated reason</dd>
+            <dt>Ask for</dt><dd>The outcome behind the ask, alternatives including a process change and a small experiment</dd>
+            <dt>You still own</dt><dd class="own">The conversation with the stakeholder</dd>
+          </dl>
+          <a class="link" href="#p-reframe">Use the prompt &rarr;</a>
+        </div>
+        <div class="card use">
+          <h3><span class="n">04</span>Expanding options</h3>
+          <dl>
+            <dt>Hand it</dt><dd>One customer problem, well framed</dd>
+            <dt>Ask for</dt><dd>Different ways to solve it: a process change, a simpler product change, a bigger bet, each with its assumption</dd>
+            <dt>You still own</dt><dd class="own">Choosing which to test first</dd>
+          </dl>
+          <a class="link" href="#p-alternatives">Use the prompt &rarr;</a>
+        </div>
+        <div class="card use">
+          <h3><span class="n">05</span>Rapid prototyping</h3>
+          <dl>
+            <dt>Hand it</dt><dd>The problem and one chosen idea</dd>
+            <dt>Ask for</dt><dd>A rough interaction, two edge cases, a fallback, and five customer test questions</dd>
+            <dt>You still own</dt><dd class="own">Putting it in front of real people. A prototype earns a reaction, not proof</dd>
+          </dl>
+          <a class="link" href="#p-prototype">Use the prompt &rarr;</a>
+        </div>
+        <div class="card use">
+          <h3><span class="n">06</span>Writing for stakeholders</h3>
+          <dl>
+            <dt>Hand it</dt><dd>Sprint outcomes, decisions, open risks, and who is reading</dd>
+            <dt>Ask for</dt><dd>A short update, release note, or sprint review summary in the reader's language</dd>
+            <dt>You still own</dt><dd class="own">Accuracy, tone, and what you are willing to commit to</dd>
+          </dl>
+          <a class="link" href="#p-update">Use the prompt &rarr;</a>
+        </div>
+      </div>
+      <div class="callout"><p><strong>A useful test:</strong> if the output would embarrass you in front of the team or a customer, it was not ready to leave the chat. Draft with AI, decide as the PO.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PROMPTS -->
+  <section class="block" id="prompts" aria-labelledby="prompts-h">
+    <div class="wrap">
+      <p class="mono eyebrow">05 &middot; Copy and paste</p>
+      <h2 id="prompts-h">Prompt library</h2>
+      <p class="lede">Every prompt from class plus a few more. Click a highlighted blank and type your own details, then copy the finished prompt into any tool. Filter by the kind of work you are doing.</p>
+      <p class="blank-hint">Blanks look like this: <span class="blank" data-ph="[your problem]"></span> and you can type straight into them.</p>
+
+      <div class="filters" role="group" aria-label="Filter prompts by task">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="framing" aria-pressed="false">Framing</button>
+        <button class="chip" type="button" data-filter="discovery" aria-pressed="false">Discovery</button>
+        <button class="chip" type="button" data-filter="backlog" aria-pressed="false">Backlog</button>
+        <button class="chip" type="button" data-filter="stakeholders" aria-pressed="false">Stakeholders</button>
+        <button class="chip" type="button" data-filter="ideation" aria-pressed="false">Ideation</button>
+        <button class="chip" type="button" data-filter="prototyping" aria-pressed="false">Prototyping</button>
+        <button class="chip" type="button" data-filter="ai-product" aria-pressed="false">AI in the product</button>
+        <button class="chip" type="button" data-filter="writing" aria-pressed="false">Writing</button>
+      </div>
+
+      <p class="mono" id="promptCount" style="margin-top:var(--space-3)" aria-live="polite">Showing 12 prompts</p>
+      <div class="prompts" id="promptList">
+
+        <article class="prompt" id="p-frame" data-tags="framing">
+          <div class="prompt-head"><h3>Frame the problem first</h3><span class="tag">Framing</span></div>
+          <p class="why">From the class activity. Let the model interview you before it suggests anything.</p>
+          <pre>I am working on a solution to solve <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[problem]" aria-label="Fill in: problem"></span>. My goal is to frame this problem so we can develop an effective solution. Ask me 10 questions, one at a time, so we can frame it appropriately. After the last question, summarize the problem in one paragraph and list the assumptions we are making.</pre>
+          <div class="prompt-foot"><small>Answer honestly. Short answers are fine.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-synthesis" data-tags="discovery">
+          <div class="prompt-head"><h3>Feedback synthesis</h3><span class="tag">Discovery</span></div>
+          <p class="why">Turn a pile of notes into patterns without letting the model invent how common anything is.</p>
+          <pre>Here are interview notes: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[paste notes]" aria-label="Fill in: paste notes"></span>.
+
+Using only these notes, find the recurring problems and cite which note each one came from. Separate observation from assumption. Point out anything contradictory between sources. Suggest five follow-up questions for the next interview. Do not invent frequency or impact.</pre>
+          <div class="prompt-foot"><small>Works with survey comments and support tickets too.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-backlog" data-tags="backlog">
+          <div class="prompt-head"><h3>Backlog critic</h3><span class="tag">Backlog</span></div>
+          <p class="why">A second opinion on ordering. It will not know your team's capacity, so keep effort out of it.</p>
+          <pre>Here is our Product Goal: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[goal]" aria-label="Fill in: goal"></span>.
+Here are the top backlog items in order: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[paste items]" aria-label="Fill in: paste items"></span>.
+
+Which items lack clear evidence of customer value? Surface the assumptions behind the current ordering. Point out anything that seems to be there because of who asked rather than what it delivers. Do not estimate effort.</pre>
+          <div class="prompt-foot"><small>Bring the output to refinement, not the ordering.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-reframe" data-tags="stakeholders">
+          <div class="prompt-head"><h3>Stakeholder reframe</h3><span class="tag">Stakeholders</span></div>
+          <p class="why">Get from "build this feature" back to the outcome behind it before you say yes or no.</p>
+          <pre>A stakeholder asked for <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[feature]" aria-label="Fill in: feature"></span> because <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[their stated reason]" aria-label="Fill in: their stated reason"></span>.
+
+What customer or business outcome sits behind this request? Give four alternative ways to reach that outcome, including at least one process change and one small experiment we could run in a sprint. For each, state the assumption it depends on.</pre>
+          <div class="prompt-foot"><small>Use the output to shape the conversation, not to replace it.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-alternatives" data-tags="ideation">
+          <div class="prompt-head"><h3>Expand the choices</h3><span class="tag">Ideation</span></div>
+          <p class="why">Instead of "give me feature ideas." Forces range before you narrow down.</p>
+          <pre>Customer problem: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[problem, in the customer's words]" aria-label="Fill in: problem, in the customer's words"></span>.
+
+Generate different ways to solve this. Include a process change, a simpler product change, and a bigger bet. State the assumption behind each one and what we would need to see to believe it. Then suggest one cheap experiment for the option you think is most promising, and explain why.</pre>
+          <div class="prompt-foot"><small>Pair with the framing prompt for best results.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-ideas" data-tags="ideation">
+          <div class="prompt-head"><h3>Five ideas, fast</h3><span class="tag">Ideation</span></div>
+          <p class="why">Step 3 of the class activity. Quick and deliberately simple.</p>
+          <pre>Generate 5 ideas that will solve this problem for the people affected: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[problem]" aria-label="Fill in: problem"></span>. For each idea, give it a name, describe it in two sentences, and say who benefits most.</pre>
+          <div class="prompt-foot"><small>Pick one as a group, then prototype it.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-prototype" data-tags="prototyping">
+          <div class="prompt-head"><h3>Rapid prototype</h3><span class="tag">Prototyping</span></div>
+          <p class="why">Make the idea real enough to react to: experience, product logic, and a learning plan.</p>
+          <pre>Using this problem: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[problem]" aria-label="Fill in: problem"></span> and this idea: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[idea]" aria-label="Fill in: idea"></span>, draft a simple end-to-end interaction. Include the happy path, two edge cases, and what happens when it cannot help (the fallback). Then write five questions I could ask a customer to test whether this is worth building. Label every assumption.</pre>
+          <div class="prompt-foot"><small>A prototype earns a reaction, not proof.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-pitch" data-tags="prototyping">
+          <div class="prompt-head"><h3>Pitch it</h3><span class="tag">Prototyping</span></div>
+          <p class="why">Step 4 of the class activity. Most tools will build a slide or one-page artifact from this.</p>
+          <pre>Build an artifact so I can present this problem and solution to a group of investors. Problem: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[problem]" aria-label="Fill in: problem"></span>. Solution: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[idea]" aria-label="Fill in: idea"></span>. Keep it to one page or a few slides: the problem, who has it, the solution, why now, and what we would need to test first.</pre>
+          <div class="prompt-foot"><small>Swap "investors" for your leadership team.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-should" data-tags="ai-product">
+          <div class="prompt-head"><h3>Should this use AI?</h3><span class="tag">AI in the product</span></div>
+          <p class="why">Walk the four questions from class before anyone starts building.</p>
+          <pre>We are considering using AI for this experience: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[describe the feature and the customer moment]" aria-label="Fill in: describe the feature and the customer moment"></span>.
+
+Help me think it through with four questions. Customer value: which outcome improves enough to justify the added complexity? Need for adaptation: does this problem benefit from interpreting varied, ambiguous input? Available context: can the product actually access the information it needs to decide? Cost of error: what happens when the AI is wrong, unsure, or unavailable? For each, give me your honest read and what I should find out. Finish with a simpler non-AI alternative I should compare against.</pre>
+          <div class="prompt-foot"><small>Bring the answers to your team and specialists.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-story" data-tags="ai-product backlog">
+          <div class="prompt-head"><h3>Four answers for an AI story</h3><span class="tag">AI in the product</span></div>
+          <p class="why">Turn a happy-path story into something the team can actually build and evaluate.</p>
+          <pre>Here is a backlog item that involves AI: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[paste the story]" aria-label="Fill in: paste the story"></span>.
+
+Draft the four answers this story needs. Outcome: what should improve for the customer? Quality: how good must the behavior be, and how would we know? Boundaries: what must the AI refuse or avoid? Fallback: what happens when it cannot help? Then list the test cases and the failures we should agree are not acceptable before release. Mark anything I need to confirm with the team.</pre>
+          <div class="prompt-foot"><small>Review with engineers and any specialists before it is ready.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-update" data-tags="writing stakeholders">
+          <div class="prompt-head"><h3>Stakeholder update</h3><span class="tag">Writing</span></div>
+          <p class="why">A first draft in the reader's language, not the team's.</p>
+          <pre>Write a short update for <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[audience, e.g. the leadership team]" aria-label="Fill in: audience, e.g. the leadership team"></span> about <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[product or initiative]" aria-label="Fill in: product or initiative"></span>.
+
+What happened this sprint: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[paste]" aria-label="Fill in: paste"></span>.
+Decisions made: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[paste]" aria-label="Fill in: paste"></span>.
+Open risks or asks: <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[paste]" aria-label="Fill in: paste"></span>.
+
+Lead with the outcome, not the activity. Keep it under 200 words, plain language, no jargon. Do not add anything I did not give you. Flag any sentence where you are unsure of the facts.</pre>
+          <div class="prompt-foot"><small>Also works for release notes and sprint review summaries.</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+        <article class="prompt" id="p-explain" data-tags="framing">
+          <div class="prompt-head"><h3>Explain it to me</h3><span class="tag">Framing</span></div>
+          <p class="why">For the technical concept the team keeps mentioning that you have been nodding along to.</p>
+          <pre>Explain <span class="blank" contenteditable="true" role="textbox" spellcheck="false" data-ph="[concept, e.g. "retrieval-augmented generation"]" aria-label="Fill in: concept, e.g. "retrieval-augmented generation""></span> to me as a Product Owner with no engineering background. Use one everyday analogy, then tell me what it changes about the decisions I make (scope, quality, cost, risk). Keep it under 250 words, then offer to go deeper on any part.</pre>
+          <div class="prompt-foot"><small>Follow up with "what should I ask my team about this?"</small><button class="reset" type="button" data-reset data-show="false">Clear blanks</button><button class="copy" type="button" data-copy><span class="ico" aria-hidden="true"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="lbl">Copy</span></button></div>
+        </article>
+
+      </div>
+      <div class="empty" id="promptEmpty">No prompts match that filter yet.</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EXERCISE -->
+  <section class="block" id="exercise" aria-labelledby="exercise-h">
+    <div class="wrap">
+      <p class="mono eyebrow">06 &middot; Take it back to work</p>
+      <h2 id="exercise-h">Run the class exercise with your team</h2>
+      <p class="lede">Frame it. Solve it. Pitch it. About 20 minutes, one screen shared, one AI chat open. It works as a refinement warm-up, a discovery kickoff, or a way to show a skeptical team what the tools can and cannot do.</p>
+      <div class="steps">
+        <div class="card"><h3>Pick a problem</h3><p>As a group, choose one real problem you all care about. Real beats hypothetical: the reactions are more honest.</p></div>
+        <div class="card"><h3>Frame it</h3><p>Paste the framing prompt and answer the ten questions together. Notice which ones the group disagrees on.</p><blockquote>"I'm working on a solution to solve [problem]. My goal is to frame this problem so we can develop an effective solution. Ask me 10 questions, one at a time, so we can frame it appropriately."</blockquote></div>
+        <div class="card"><h3>Generate ideas, then pick one</h3><p>Ask for five ideas. Discuss, then choose one as a group. The choosing is the valuable part.</p><blockquote>"Generate 5 ideas that will solve this problem for the people affected."</blockquote></div>
+        <div class="card"><h3>Pitch it</h3><p>Have it build something you can react to. Then talk about what it got right, what it made up, and what you would test first.</p><blockquote>"Build an artifact so I can present the problem and solution to a group of investors."</blockquote></div>
+      </div>
+      <div class="callout"><p><strong>Two ideas to leave with:</strong> when AI is in the product, plan for a range of outcomes, not just the happy path. When AI is in your workflow, let it prepare the conversation. You still make the call.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- TOOLS -->
+  <section class="block" id="tools" aria-labelledby="tools-h">
+    <div class="wrap">
+      <p class="mono eyebrow">07 &middot; Where to find it</p>
+      <h2 id="tools-h">The same ideas in ChatGPT, Claude, and Copilot</h2>
+      <p class="lede">The features exist in all three. The names move around, and menus change often, so search the tool's help for the words below if a button is not where this says.</p>
+      <div class="table-wrap">
+        <table>
+          <caption class="mono" style="text-align:left;padding:14px 16px;border-bottom:1px solid var(--border)">Feature names as of September 2026</caption>
+          <thead><tr><th scope="col">What you want</th><th scope="col">ChatGPT</th><th scope="col">Claude</th><th scope="col">Microsoft 365 Copilot</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Reusable context for a product</th><td>Projects (sidebar). Add files and project instructions.</td><td>Projects. Add files and project instructions.</td><td>Copilot Notebooks, or paste your context brief at the start of a chat.</td></tr>
+            <tr><th scope="row">Standing instructions about you</th><td>Settings, then Personalization / Custom instructions.</td><td>Settings, then Profile preferences.</td><td>Limited. Keep a saved brief to paste in.</td></tr>
+            <tr><th scope="row">Attach notes or documents</th><td>Paperclip in the message box.</td><td>Plus button in the message box.</td><td>Paperclip. Can also pull from OneDrive, SharePoint, and email.</td></tr>
+            <tr><th scope="row">Think longer on hard questions</th><td>"Think longer" or a reasoning model in the model picker.</td><td>Extended thinking toggle.</td><td>Think Deeper.</td></tr>
+            <tr><th scope="row">Look things up on the web</th><td>Search toggle in the message box.</td><td>Web search toggle.</td><td>Switch between Web and Work modes.</td></tr>
+            <tr><th scope="row">Build a quick artifact or slide</th><td>Canvas, or ask for a document.</td><td>Artifacts appear beside the chat.</td><td>Copilot Pages, or ask it to draft in Word or PowerPoint.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint mono">Scroll the table sideways on a small screen</p>
+      <p class="hero-note" style="margin-top:var(--space-3)">Agile Infusion has no affiliation with OpenAI, Anthropic, Microsoft, or any other AI vendor. Use what your company allows, and check your organization's policy before pasting customer or confidential data into any tool.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CONTACT -->
+  <section class="block" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <p class="mono eyebrow">08 &middot; Keep in touch</p>
+      <h2 id="contact-h">Questions after class? Ask us.</h2>
+      <p class="lede">Agile Infusion offers corporate AI and agility training and coaching. If something here sparked an idea for your team, we would like to hear about it.</p>
+      <div class="people">
+        <div class="card person">
+          <span class="mono">Your instructor</span>
+          <h3>Derek Schatz</h3>
+          <p class="role">Product management and AI training, Agile Infusion</p>
+          <ul>
+            <li><a href="mailto:derek.schatz@agileinfusion.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>derek.schatz@agileinfusion.com</a></li>
+            <li><a href="tel:+12156303317"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg>(215) 630-3317</a></li>
+            <li><a href="https://www.linkedin.com/in/derek-schatz-64968867" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="sr-only">(opens in a new tab)</span></a></li>
+          </ul>
+        </div>
+        <div class="card person">
+          <span class="mono">Agile Infusion</span>
+          <h3>Dr. Bob Schatz</h3>
+          <p class="role">Founder, Agile Infusion</p>
+          <ul>
+            <li><a href="mailto:bobschatz@agileinfusion.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>bobschatz@agileinfusion.com</a></li>
+            <li><a href="tel:+12154353240"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg>(215) 435-3240</a></li>
+            <li><a href="https://www.linkedin.com/in/bobschatz" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="sr-only">(opens in a new tab)</span></a></li>
+            <li><a href="https://agileinfusion.com" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>agileinfusion.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap row">
+    <span>&copy; <span id="year">2026</span> Agile Infusion. Corporate AI and agility training and coaching.</span>
+    <span><a href="#top">Back to top</a></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" data-show="false"></div>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce)root.classList.add('no-motion');
+
+  // Theme toggle
+  var tbtn=d.getElementById('themeToggle');
+  function syncTheme(){var dark=root.classList.contains('dark');tbtn.setAttribute('aria-pressed',dark?'true':'false');tbtn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');}
+  syncTheme();
+  tbtn.addEventListener('click',function(){root.classList.toggle('dark');try{localStorage.setItem('theme',root.classList.contains('dark')?'dark':'light');}catch(e){}syncTheme();});
+
+  // Mobile menu
+  var mbtn=d.getElementById('menuToggle'), menu=d.getElementById('mobileMenu');
+  function setMenu(open){menu.setAttribute('data-open',open?'true':'false');mbtn.setAttribute('aria-expanded',open?'true':'false');mbtn.textContent=open?'Close':'Menu';}
+  mbtn.addEventListener('click',function(){setMenu(menu.getAttribute('data-open')!=='true');});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.getAttribute('data-open')==='true'){setMenu(false);mbtn.focus();}});
+
+  // Reading progress
+  var bar=d.getElementById('progressBar');
+  function progress(){var h=root.scrollHeight-innerHeight;var p=h>0?Math.min(1,scrollY/h):0;bar.style.transform='scaleX('+p+')';}
+  addEventListener('scroll',progress,{passive:true});addEventListener('resize',progress);progress();
+
+  // Active nav on scroll
+  var links=[].slice.call(d.querySelectorAll('nav.primary a, .mobile-menu a'));
+  var ids=links.map(function(a){return a.getAttribute('href').slice(1);}).filter(function(v,i,s){return v&&s.indexOf(v)===i;});
+  var sections=ids.map(function(id){return d.getElementById(id);}).filter(Boolean);
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var hasIO='IntersectionObserver' in window;
+  if(hasIO){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting)setActive(en.target.id);});},{rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(function(s){io.observe(s);});
+  }
+
+  // Reveal on scroll (staggered within each section)
+  var revealSel='section.block .card, section.block .term, section.block .flow .step, section.block .prompt, section.block .checklist li, section.block h2, section.block .lede, section.block .callout, section.block .table-wrap';
+  var items=[].slice.call(d.querySelectorAll(revealSel));
+  if(hasIO&&!reduce){
+    var lastParent=null,k=0;
+    items.forEach(function(el){
+      var parent=el.parentNode;if(parent!==lastParent){lastParent=parent;k=0;}
+      el.classList.add('reveal');el.style.setProperty('--d',Math.min(k,7)*60+'ms');k++;
+    });
+    var rio=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');rio.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:0.05});
+    items.forEach(function(el){rio.observe(el);});
+  }
+
+  // Editable blanks
+  var blanks=[].slice.call(d.querySelectorAll('.blank[contenteditable]'));
+  function syncBlank(b){var has=b.textContent.trim().length>0;b.classList.toggle('filled',has);var card=b.closest('.prompt');if(card){var r=card.querySelector('[data-reset]');if(r){var any=[].slice.call(card.querySelectorAll('.blank')).some(function(x){return x.textContent.trim();});r.setAttribute('data-show',any?'true':'false');}}}
+  blanks.forEach(function(b){
+    b.addEventListener('input',function(){syncBlank(b);});
+    b.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();b.blur();}});
+    b.addEventListener('paste',function(e){e.preventDefault();var t=(e.clipboardData||window.clipboardData).getData('text').replace(/\s+/g,' ');d.execCommand('insertText',false,t);});
+  });
+  [].slice.call(d.querySelectorAll('[data-reset]')).forEach(function(r){r.addEventListener('click',function(){var card=r.closest('.prompt');[].slice.call(card.querySelectorAll('.blank')).forEach(function(b){b.textContent='';syncBlank(b);});showToast('Blanks cleared.');});});
+
+  // Prompt filters
+  var chips=[].slice.call(d.querySelectorAll('.chip[data-filter]'));
+  var cards=[].slice.call(d.querySelectorAll('#promptList .prompt'));
+  var empty=d.getElementById('promptEmpty'), count=d.getElementById('promptCount');
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    var f=c.getAttribute('data-filter');
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+    var shown=0;
+    cards.forEach(function(card){var tags=(card.getAttribute('data-tags')||'').split(/\s+/);var on=f==='all'||tags.indexOf(f)>-1;card.hidden=!on;if(on){shown++;card.classList.add('in');}});
+    empty.setAttribute('data-show',shown?'false':'true');
+    count.textContent='Showing '+shown+' prompt'+(shown===1?'':'s')+(f==='all'?'':' for '+c.textContent.toLowerCase());
+  });});
+
+  // Copy buttons
+  var toast=d.getElementById('toast'), toastTimer;
+  function showToast(msg){toast.textContent=msg;toast.setAttribute('data-show','true');clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.setAttribute('data-show','false');},1800);}
+  function fallbackCopy(text){var ta=d.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';d.body.appendChild(ta);ta.select();var ok=false;try{ok=d.execCommand('copy');}catch(e){}d.body.removeChild(ta);return ok;}
+  function promptText(pre){
+    var clone=pre.cloneNode(true);
+    [].slice.call(clone.querySelectorAll('.blank')).forEach(function(b){var t=b.textContent.trim();b.replaceWith(d.createTextNode(t||b.getAttribute('data-ph')));});
+    [].slice.call(clone.querySelectorAll('.ph')).forEach(function(x){x.replaceWith(d.createTextNode(x.textContent));});
+    return clone.textContent.replace(/ /g,' ').trim();
+  }
+  [].slice.call(d.querySelectorAll('[data-copy]')).forEach(function(btn){
+    var lbl=btn.querySelector('.lbl');
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.prompt').querySelector('pre');
+      var text=promptText(pre);
+      if(!text){showToast('Nothing to copy yet.');return;}
+      var unfilled=pre.querySelectorAll('.blank:not(.filled)').length;
+      function done(ok){
+        btn.setAttribute('data-state',ok?'done':'error');lbl.textContent=ok?'Copied':'Select and copy';
+        showToast(ok?(unfilled?'Copied. '+unfilled+' blank'+(unfilled===1?'':'s')+' still to fill in.':'Prompt copied. Paste it into your AI tool.'):'Copy blocked by the browser. Select the text and copy it manually.');
+        setTimeout(function(){btn.removeAttribute('data-state');lbl.textContent='Copy';},2000);
+        if(!ok){var r=d.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+      }
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(fallbackCopy(text));});}
+      else{done(fallbackCopy(text));}
+    });
+  });
+
+  // "Should this use AI?" verdict
+  var boxes=[].slice.call(d.querySelectorAll('.checklist input[type="checkbox"]'));
+  var vBar=d.getElementById('verdictBar'), vText=d.getElementById('verdictText');
+  var verdicts=[
+    '<strong>Nothing checked yet.</strong> Tick each question you could answer confidently in a room with your team.',
+    '<strong>Start simpler.</strong> One confident answer is not enough to justify the added complexity yet. Look for a non-AI version of this experience first.',
+    '<strong>Worth a discovery spike.</strong> Two answers you trust, two you do not. Find the riskiest unknown and test that before anyone builds.',
+    '<strong>Promising, one gap left.</strong> Close the last question with real evidence, then write the four answers for the story.',
+    '<strong>Strong case.</strong> You can answer all four. Next step: define outcome, quality, boundaries, and fallback below.'
+  ];
+  function verdict(){var n=boxes.filter(function(b){return b.checked;}).length;vBar.style.width=(n/4*100)+'%';vText.innerHTML=verdicts[n];}
+  boxes.forEach(function(b){b.addEventListener('change',verdict);});
+
+  // Story builder
+  var f={story:d.getElementById('sb-story'),outcome:d.getElementById('sb-outcome'),quality:d.getElementById('sb-quality'),boundaries:d.getElementById('sb-boundaries'),fallback:d.getElementById('sb-fallback')};
+  var sbPre=d.getElementById('sb-pre'), sbNote=d.getElementById('sb-note'), sbCount=d.getElementById('sb-count'), pips=[].slice.call(d.querySelectorAll('#storyForm .pips i'));
+  function esc(t){return t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function line(label,val,ph){return label+': '+(val?esc(val):'<span class="ph">'+ph+'</span>');}
+  function build(){
+    var v={};var n=0;for(var k in f){v[k]=f[k].value.trim();if(k!=='story'&&v[k])n++;}
+    var any=v.story||n;
+    sbPre.innerHTML=(v.story?esc(v.story):'<span class="ph">'+(f.story.placeholder)+'</span>')+'\n\n'+
+      line('Outcome',v.outcome,'what should improve for the customer')+'\n'+
+      line('Quality',v.quality,'how good it must be, and how we will know')+'\n'+
+      line('Boundaries',v.boundaries,'what it must refuse or avoid')+'\n'+
+      line('Fallback',v.fallback,'what happens when it cannot help');
+    pips.forEach(function(p,i){p.classList.toggle('on',i<n);});
+    sbCount.textContent=n+' of 4 answers';
+    sbNote.textContent=n===4?'All four answered. Copy it into your backlog.':(any?'Keep going. Grey text shows what is still missing.':'Start typing on the left and this fills in.');
+  }
+  for(var k in f){f[k].addEventListener('input',build);}
+  build();
+
+  d.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

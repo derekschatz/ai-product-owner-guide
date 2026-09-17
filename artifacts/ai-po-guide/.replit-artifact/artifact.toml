@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "AI for Product Owners Guide"
+description = "A static reference guide companion to the 'AI and the Product Owner' class from Agile Infusion, covering AI basics, habits for better answers, decision checklists, and copy-and-paste prompts for Product Owners."
+version = "1.0.0"
+id = "artifacts/ai-po-guide"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22250
+
+[services.development]
+run = "pnpm --filter @workspace/ai-po-guide run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ai-po-guide", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ai-po-guide/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22250"
+BASE_PATH = "/"
