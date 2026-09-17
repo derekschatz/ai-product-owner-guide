@@ -164,13 +164,27 @@
   .hero-meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
   .hero-note{margin-top:var(--space-2);color:var(--muted);font-size:var(--step--1);max-width:65ch}
 
-  /* Definition list */
-  .terms{display:grid;gap:var(--space-2);margin-top:var(--space-4)}
-  @media (min-width:768px){.terms{grid-template-columns:repeat(2,1fr)}}
-  .term{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3)}
-  .term dt{font-weight:600;font-size:var(--step-1);margin-bottom:6px}
-  .term dd{margin:0;color:var(--muted)}
-  .term dd strong{color:var(--fg);font-weight:600}
+  /* Basics: scan first, expand when needed */
+  .mental-model{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:var(--space-4)}
+  @media (min-width:768px){.mental-model{grid-template-columns:repeat(5,1fr)}}
+  .mental-piece{background:var(--inverse);color:var(--inverse-fg);border-radius:var(--radius-sm);padding:16px;min-height:104px}
+  .mental-piece:last-child:nth-child(odd){grid-column:1/-1}
+  @media (min-width:768px){.mental-piece:last-child:nth-child(odd){grid-column:auto}}
+  .mental-piece b{display:block;color:var(--accent);font-size:var(--step-1);margin-bottom:4px}
+  .mental-piece span{font-size:var(--step--1);opacity:.82}
+  .term-groups{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
+  .term-group h3{margin-bottom:12px}
+  .terms{display:grid;gap:8px}
+  @media (min-width:900px){.term-groups{grid-template-columns:repeat(3,1fr);align-items:start}}
+  .term{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;padding:0}
+  .term summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;min-height:72px;padding:14px 16px}
+  .term summary::-webkit-details-marker{display:none}
+  .term summary::after{content:"+";grid-column:2;grid-row:1/3;font-family:var(--font-mono);font-size:1.25rem;color:var(--accent)}
+  .term[open] summary::after{content:"\2212"}
+  .term-name{font-weight:600;font-size:var(--step-1);line-height:1.2}
+  .term-short{color:var(--muted);font-size:var(--step--1);line-height:1.4}
+  .term-body{padding:0 16px 16px;color:var(--muted);border-top:1px dashed var(--border);padding-top:14px}
+  .term-body strong{color:var(--fg);font-weight:600}
   .term .where{margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);font-size:var(--step--1)}
   .term .where b{color:var(--fg);font-weight:600}
 
@@ -444,56 +458,45 @@
     <div class="wrap">
       <p class="mono eyebrow">01 &middot; Start here</p>
       <h2 id="basics-h">The basics, in plain English</h2>
-      <p class="lede">Nine terms that explain most of what you will run into. The analogies are shortcuts, not perfect technical definitions, but they make the tools easier to reason about.</p>
+      <p class="lede">Start with the five-part picture below. Then open only the terms you need. The analogies are shortcuts, not perfect technical definitions.</p>
 
-      <dl class="terms">
-        <div class="term">
-          <dt>Model</dt>
-          <dd><strong>Think of the large language model, or LLM, as the brain.</strong> It is the engine underneath the chat window. It has read an enormous amount of text and predicts what should come next, one word at a time. That is why it is fluent, fast, and occasionally confident about something wrong. Treat it like a well-read colleague, not a database.
-            <p class="where"><b>Which one to pick:</b> most tools let you choose a model from a dropdown. Use the newest or most capable option for real work; the "fast" or "mini" options are for quick, low-stakes questions.</p>
-          </dd>
-        </div>
-        <div class="term">
-          <dt>Prompt</dt>
-          <dd>Whatever you type. The quality of the answer tracks the quality of the request. Situation, goal, audience, constraints, and what a good answer looks like all count. <strong>Vague in, generic out.</strong></dd>
-        </div>
-        <div class="term">
-          <dt>Chat vs. Project</dt>
-          <dd>A <strong>chat</strong> is one conversation. When it ends, most of what you said goes with it. <strong>A Project is like a project room:</strong> the brief, reference files, instructions, and related conversations stay together. Use a Project for anything you will return to: your product, your customers, your backlog.
-            <p class="where"><b>Where to find it:</b> ChatGPT calls them Projects. Claude calls them Projects. Microsoft 365 Copilot uses Notebooks, and a saved brief you paste in works too. See <a href="#tools">the tool guide</a>.</p>
-          </dd>
-        </div>
-        <div class="term">
-          <dt>Context window</dt>
-          <dd>Everything the model can "see" right now: your messages, attached files, and its own earlier answers. It is large but not infinite. In a very long chat the early parts fade or drop out. <strong>Start a new chat when the topic changes</strong> and put anything permanent in a Project or a brief.</dd>
-        </div>
-        <div class="term">
-          <dt>Hallucination</dt>
-          <dd>When the model fills a gap with something plausible instead of something true. Numbers, sources, quotes, names, and "how common is this" claims are the usual suspects. <strong>Ask it to use only what you gave it and to say when it does not know.</strong></dd>
-        </div>
-        <div class="term">
-          <dt>Reasoning mode</dt>
-          <dd>A setting that lets the model think longer before answering. Slower, better for analysis, tradeoffs, and anything with several moving parts. Skip it for simple rewrites.
-            <p class="where"><b>Where to find it:</b> ChatGPT has a "Think longer" option and reasoning models. Claude calls it Extended thinking. Copilot calls it Think Deeper.</p>
-          </dd>
-        </div>
-        <div class="term">
-          <dt>Custom instructions</dt>
-          <dd><strong>Instructions are like a job description and operating manual.</strong> They tell the AI who it is helping, how to work, how to format answers, and what to avoid. Set them once and stop repeating yourself. A Project can have instructions that apply only inside that Project.</dd>
-        </div>
-        <div class="term">
-          <dt>Skill</dt>
-          <dd><strong>Skills are like SOPs for AI.</strong> A skill is a reusable set of instructions for one kind of work, such as synthesizing feedback or critiquing a backlog. A good skill names the inputs, steps, output, and guardrails so the process is repeatable. See <a href="#projects">how to make one</a>.</dd>
-        </div>
-        <div class="term">
-          <dt>Tool</dt>
-          <dd><strong>Tools are like hands and access badges.</strong> The model can reason with language; a tool lets it do something, such as search the web, read a file, run code, or use another app. Access should match the job and your organization's policy.</dd>
-        </div>
-        <div class="term">
-          <dt>Agent</dt>
-          <dd>A model that can take actions, not just answer: browse, open files, run steps in sequence, use other software. You will hear the word a lot. For PO work today, the chat and a Project cover most of what matters. <strong>Agents are worth watching, not required.</strong></dd>
-        </div>
-      </dl>
+      <div class="mental-model" aria-label="A simple mental model for AI systems">
+        <div class="mental-piece"><b>Brain</b><span>The model reasons with language.</span></div>
+        <div class="mental-piece"><b>Room</b><span>The Project keeps related work together.</span></div>
+        <div class="mental-piece"><b>Manual</b><span>Instructions define how to work.</span></div>
+        <div class="mental-piece"><b>SOPs</b><span>Skills make a process repeatable.</span></div>
+        <div class="mental-piece"><b>Hands</b><span>Tools let the AI take action.</span></div>
+      </div>
+
+      <div class="term-groups">
+        <section class="term-group" aria-labelledby="basics-talk">
+          <h3 id="basics-talk">Having a conversation</h3>
+          <div class="terms">
+            <details class="term"><summary><span class="term-name">Model</span><span class="term-short">The brain underneath the chat</span></summary><div class="term-body">The large language model, or LLM, predicts what should come next from patterns in enormous amounts of text. That is why it is fluent, fast, and occasionally confident about something wrong. <strong>Treat it like a well-read colleague, not a database.</strong><p class="where"><b>Which one to pick:</b> use a capable model for real work; faster or smaller options suit quick, low-stakes questions.</p></div></details>
+            <details class="term"><summary><span class="term-name">Prompt</span><span class="term-short">The request you give it</span></summary><div class="term-body">Whatever you type. Situation, goal, audience, constraints, and what a good answer looks like all count. <strong>Vague in, generic out.</strong></div></details>
+            <details class="term"><summary><span class="term-name">Context window</span><span class="term-short">What the model can see right now</span></summary><div class="term-body">Your messages, attached files, and earlier answers share a limited working space. In a very long chat, early details can fade or drop out. <strong>Start a new chat when the topic changes</strong> and keep permanent context in a Project or brief.</div></details>
+          </div>
+        </section>
+
+        <section class="term-group" aria-labelledby="basics-reuse">
+          <h3 id="basics-reuse">Making work reusable</h3>
+          <div class="terms">
+            <details class="term"><summary><span class="term-name">Chat vs. Project</span><span class="term-short">One conversation vs. a project room</span></summary><div class="term-body">A <strong>chat</strong> is one conversation. A <strong>Project</strong> keeps related chats, files, and standing instructions together. Use one for work you will return to: your product, customers, or backlog.<p class="where"><b>Names vary:</b> some tools call this a Project, Notebook, workspace, or saved brief. See <a href="#tools">the tool guide</a>.</p></div></details>
+            <details class="term"><summary><span class="term-name">Instructions</span><span class="term-short">The job description and operating manual</span></summary><div class="term-body">Instructions tell the AI who it is helping, how to work, how to format answers, and what to avoid. Set them once instead of repeating yourself. Project instructions apply only to that body of work.</div></details>
+            <details class="term"><summary><span class="term-name">Skill</span><span class="term-short">An SOP for a repeatable AI task</span></summary><div class="term-body">A skill defines the inputs, steps, output, and guardrails for one kind of work, such as synthesizing feedback or critiquing a backlog. See <a href="#projects">how to make one</a>.</div></details>
+          </div>
+        </section>
+
+        <section class="term-group" aria-labelledby="basics-trust">
+          <h3 id="basics-trust">Trust and action</h3>
+          <div class="terms">
+            <details class="term"><summary><span class="term-name">Hallucination</span><span class="term-short">A plausible answer that is not true</span></summary><div class="term-body">The model can fill a gap with something that sounds right. Numbers, sources, quotes, names, and frequency claims deserve extra scrutiny. <strong>Ask it to use your sources and admit what it does not know.</strong></div></details>
+            <details class="term"><summary><span class="term-name">Reasoning mode</span><span class="term-short">More thinking time for harder questions</span></summary><div class="term-body">A setting that lets the model spend longer on analysis, tradeoffs, and problems with several moving parts. It is usually unnecessary for a simple rewrite.<p class="where"><b>Names vary:</b> look for terms such as reasoning, think longer, extended thinking, or think deeper.</p></div></details>
+            <details class="term"><summary><span class="term-name">Tool</span><span class="term-short">Hands and access for the model</span></summary><div class="term-body">A tool lets the model do something beyond generating text, such as search the web, read a file, run code, or use another app. Access should match the job and your organization's policy.</div></details>
+            <details class="term"><summary><span class="term-name">Agent</span><span class="term-short">A model that can complete a sequence of actions</span></summary><div class="term-body">An agent can plan and use tools across several steps. For much PO work, a chat and Project still cover what matters. <strong>Use agents when the workflow benefits from action and iteration, not because the label sounds advanced.</strong></div></details>
+          </div>
+        </section>
+      </div>
     </div>
   </section>
 
