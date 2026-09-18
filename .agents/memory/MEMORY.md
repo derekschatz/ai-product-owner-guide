@@ -1,0 +1,1 @@
+- [GitHub synchronization authentication](github-sync-auth.md) — use the standard GitHub connector when the GitHub App reports healthy but Git pushes receive no credential.
