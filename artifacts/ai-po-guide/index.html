@@ -116,17 +116,15 @@
   .mobile-menu a[aria-current="true"]{color:var(--accent)}
   @media (min-width:1180px){.mobile-menu{display:none!important}}
   @media (min-width:1180px){
-    header.site{position:fixed;inset:0 auto 0 0;width:248px;border-bottom:0;border-right:1px solid var(--border)}
-    header.site > .bar{width:100%;height:100%;margin:0;padding:28px 20px;flex-direction:column;align-items:stretch;justify-content:flex-start}
-    .brand{display:grid;gap:12px;justify-items:start}
-    .brand img{height:auto;width:116px}
-    .brand span{max-width:18ch;line-height:1.5}
-    nav.primary{margin-top:32px}
-    nav.primary ul{flex-direction:column;gap:4px}
-    nav.primary a{display:flex;width:100%;padding:0 14px}
-    nav.primary a[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent);background:var(--card)}
-    .controls{margin-top:auto}
-    main,footer.site{margin-left:248px}
+    header.site{background:var(--bg);backdrop-filter:none}
+    nav.primary{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:45;background:color-mix(in oklch,var(--card) 92%,transparent);border:1px solid var(--border);border-radius:var(--radius);padding:10px;box-shadow:0 12px 36px color-mix(in oklch,var(--fg) 10%,transparent);backdrop-filter:blur(10px)}
+    nav.primary::before{content:"Sections";display:block;padding:4px 12px 8px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+    nav.primary ul{flex-direction:column;gap:2px}
+    nav.primary a{display:flex;width:100%;min-height:38px;padding:0 12px 0 28px;position:relative;font-size:.8125rem;transition:color .2s ease-out,background-color .2s ease-out,transform .2s ease-out}
+    nav.primary a::before{content:"";position:absolute;left:11px;width:6px;height:6px;border-radius:50%;background:var(--faint);transition:background-color .2s ease-out,transform .2s ease-out}
+    nav.primary a[aria-current="true"]{box-shadow:none;background:var(--accent-soft);color:var(--fg);transform:translateX(-4px)}
+    nav.primary a[aria-current="true"]::before{background:var(--accent);transform:scale(1.45)}
+    main .wrap,footer .wrap{width:min(calc(100% - 320px),1100px);margin-left:max(32px,calc((100% - 1200px)/2));margin-right:auto}
   }
 
   /* Focus */
